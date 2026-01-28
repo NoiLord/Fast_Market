@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fast Market Games | Xbox Game Pass Ultimate | Официальные подписки</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #00ff88;
+            --primary-dark: #00cc6a;
+            --secondary: #0a0a0a;
+            --accent: #ff00ff;
+            --telegram: #0088ff;
+            --neon-blue: #00f3ff;
+            --neon-pink: #ff00ff;
+            --light: #ffffff;
+            --dark: #050505;
+            --success: #00ff88;
+            --warning: #ffcc00;
+            --border-radius: 16px;
+            --box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            --gradient: linear-gradient(135deg, #0a0a0a 0%, #111 100%);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--light);
+            background-color: var(--dark);
+            overflow-x: hidden;
+            min-height: 100vh;
+            position: relative;
+            cursor: auto;
+        }
+        
+        a, button, .btn, .compact-cta, .pricing-card, .review-card, .guarantee-card {
+            cursor: pointer !important;
+        }
+        
+        /* Неоновый фон с анимацией */
+        .neon-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(0, 255, 136, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(255, 0, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(0, 243, 255, 0.1) 0%, transparent 50%),
+                linear-gradient(135deg, #050505 0%, #0a0a0a 100%);
+            animation: bgPulse 8s infinite alternate;
+        }
+        
+        /* Огонёк за мышкой - плавный */
+        .mouse-follower {
+            position: fixed;
+            width: 24px;
+            height: 24px;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            filter: blur(8px);
+            opacity: 0.8;
+            mix-blend-mode: screen;
+            transition: transform 0.05s linear;
+            transform: translate(-50%, -50%);
+            will-change: transform;
+        }
+        
+        /* Компактное меню с неоновым эффектом */
+        .compact-header {
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            color: white;
+            padding: 16px 0;
+            box-shadow: 0 4px 30px rgba(0, 255, 136, 0.25);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+        }
+        
+        .compact-nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .compact-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-container {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+            animation: logoGlow 3s infinite alternate;
+            transition: var(--transition);
+            border: 2px solid rgba(0, 255, 136, 0.3);
+        }
+        
+        .logo-container:hover {
+            transform: rotate(5deg) scale(1.1);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.8);
+            animation: logoGlowHover 1s infinite alternate;
+        }
+        
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        
+        .compact-logo h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--primary), var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+        }
+        
+        .compact-menu {
+            display: flex;
+            gap: 35px;
+            align-items: center;
+        }
+        
+        .compact-menu a {
+            color: #ccc;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            padding: 10px 0;
+            position: relative;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .compact-menu a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 15px var(--primary);
+        }
+        
+        .compact-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .compact-menu a:hover::after {
+            width: 100%;
+        }
+        
+        .compact-cta {
+            background: linear-gradient(90deg, var(--primary), var(--neon-blue));
+            color: black;
+            padding: 14px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1rem;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+            animation: buttonGlow 3s infinite alternate;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            min-width: 160px;
+            justify-content: center;
+        }
+        
+        @media (min-width: 769px) {
+            .compact-cta {
+                padding: 16px 50px;
+                min-width: 180px;
+                font-size: 1.1rem;
+            }
+        }
+        
+        .compact-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s ease;
+        }
+        
+        .compact-cta:hover::before {
+            left: 100%;
+        }
+        
+        .compact-cta:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.8);
+        }
+        
+        /* Герой секция */
+        .hero-section {
+            text-align: center;
+            padding: 140px 20px 120px;
+            position: relative;
+        }
+        
+        .hero-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.2rem;
+            font-weight: 900;
+            margin-bottom: 40px;
+            background: linear-gradient(90deg, var(--primary), var(--neon-blue), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            text-shadow: 0 0 40px rgba(0, 255, 136, 0.6);
+            animation: titleGlow 4s infinite alternate;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.4rem;
+            max-width: 800px;
+            margin: 0 auto 60px;
+            opacity: 0.9;
+            line-height: 1.7;
+            color: #ddd;
+        }
+        
+        /* Тарифы с красивым оформлением */
+        .pricing-section {
+            padding: 100px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 100px;
+        }
+        
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 25px rgba(0, 255, 136, 0.4);
+        }
+        
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: #aaa;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            margin-bottom: 120px;
+        }
+        
+        .pricing-card {
+            background: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius);
+            padding: 50px 40px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(0, 255, 136, 0.15);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-20px);
+            border-color: rgba(0, 255, 136, 0.5);
+            box-shadow: 0 25px 60px rgba(0, 255, 136, 0.35);
+        }
+        
+        .pricing-card.popular {
+            border: 2px solid var(--accent);
+            transform: scale(1.05);
+            box-shadow: 0 0 50px rgba(255, 0, 255, 0.4);
+        }
+        
+        .pricing-card.popular:hover {
+            transform: scale(1.05) translateY(-20px);
+            box-shadow: 0 0 80px rgba(255, 0, 255, 0.6);
+        }
+        
+        .popular-badge {
+            position: absolute;
+            top: 25px;
+            right: -40px;
+            background: linear-gradient(45deg, var(--accent), var(--neon-pink));
+            color: black;
+            padding: 10px 45px;
+            transform: rotate(45deg);
+            font-size: 0.85rem;
+            font-weight: 900;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1.5px;
+            box-shadow: 0 0 20px var(--accent);
+        }
+        
+        .pricing-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .pricing-duration {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            color: white;
+            text-shadow: 0 0 15px white;
+        }
+        
+        .pricing-price {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 4.2rem;
+            font-weight: 900;
+            color: var(--primary);
+            margin-bottom: 35px;
+            line-height: 1;
+            text-shadow: 0 0 25px var(--primary);
+        }
+        
+        .pricing-price span {
+            font-size: 1.3rem;
+            color: #aaa;
+            font-weight: 400;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 45px;
+            text-align: left;
+            flex-grow: 1;
+        }
+        
+        .pricing-features li {
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            align-items: center;
+            font-size: 1.05rem;
+            color: #eee;
+            transition: var(--transition);
+        }
+        
+        .pricing-features li:hover {
+            color: white;
+            padding-left: 10px;
+        }
+        
+        .pricing-features li i {
+            color: var(--success);
+            margin-right: 15px;
+            font-size: 1.2rem;
+            text-shadow: 0 0 15px var(--success);
+        }
+        
+        /* Кнопки внизу карточек */
+        .pricing-footer {
+            margin-top: auto;
+            padding-top: 30px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(90deg, var(--primary), var(--neon-blue));
+            color: black;
+            padding: 20px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            border: none;
+            width: 100%;
+            gap: 15px;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 25px rgba(0, 255, 136, 0.6);
+            animation: buttonGlow 3s infinite alternate;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.7s ease;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-8px) scale(1.05);
+            box-shadow: 0 0 50px rgba(0, 255, 136, 0.9);
+        }
+        
+        .btn-telegram {
+            background: linear-gradient(90deg, var(--telegram), #00ccff);
+            box-shadow: 0 0 25px rgba(0, 136, 255, 0.6);
+            animation: telegramGlow 3s infinite alternate;
+        }
+        
+        .btn-telegram:hover {
+            box-shadow: 0 0 50px rgba(0, 136, 255, 0.9);
+        }
+        
+        /* Контакты поддержки */
+        .support-contact {
+            background: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius);
+            padding: 70px;
+            margin: 100px 0;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            box-shadow: var(--box-shadow);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .support-contact::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.05) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+            z-index: 0;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 60px;
+            margin-top: 50px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .contact-item {
+            padding: 40px 35px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(0, 255, 136, 0.25);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+        
+        .contact-item:hover {
+            transform: translateY(-15px);
+            border-color: var(--primary);
+            box-shadow: 0 20px 50px rgba(0, 255, 136, 0.25);
+        }
+        
+        .contact-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(0, 255, 136, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2.5rem;
+            color: var(--primary);
+            box-shadow: 0 0 25px rgba(0, 255, 136, 0.4);
+            transition: var(--transition);
+        }
+        
+        .contact-item:hover .contact-icon {
+            transform: rotate(15deg) scale(1.1);
+            background: rgba(0, 255, 136, 0.25);
+        }
+        
+        .contact-link {
+            display: inline-block;
+            background: rgba(0, 136, 255, 0.15);
+            color: var(--telegram);
+            padding: 14px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 20px;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 136, 255, 0.4);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .contact-link:hover {
+            background: rgba(0, 136, 255, 0.25);
+            color: white;
+            border-color: var(--telegram);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 136, 255, 0.3);
+        }
+        
+        /* QR секция */
+        .qr-section {
+            background: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius);
+            padding: 80px;
+            margin: 120px 0;
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .qr-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 255, 136, 0.08) 0%, transparent 70%);
+            animation: rotate 15s linear infinite;
+            z-index: 0;
+        }
+        
+        .qr-container {
+            display: flex;
+            align-items: center;
+            gap: 70px;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .qr-code-container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 25px;
+            box-shadow: 0 0 50px rgba(0, 255, 136, 0.4);
+            border: 2px solid rgba(0, 255, 136, 0.4);
+            overflow: hidden;
+        }
+        
+        .qr-code-container::after {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--primary), var(--neon-blue), var(--accent), var(--primary));
+            z-index: -1;
+            border-radius: 27px;
+            animation: borderRotate 3s linear infinite;
+        }
+        
+        .qr-code-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 15px;
+            filter: drop-shadow(0 0 15px rgba(0, 255, 136, 0.6));
+        }
+        
+        /* Отзывы */
+        .reviews-section {
+            padding: 120px 0;
+        }
+        
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 50px;
+            margin-top: 80px;
+        }
+        
+        .review-card {
+            background: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius);
+            padding: 40px 35px;
+            border: 1px solid rgba(0, 255, 136, 0.15);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .review-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), transparent);
+        }
+        
+        .review-card:hover {
+            transform: translateY(-15px);
+            border-color: rgba(0, 255, 136, 0.5);
+            box-shadow: 0 20px 50px rgba(0, 255, 136, 0.25);
+        }
+        
+        .review-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .review-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--neon-blue));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: black;
+            margin-right: 25px;
+            box-shadow: 0 0 20px var(--primary);
+            transition: var(--transition);
+        }
+        
+        .review-card:hover .review-avatar {
+            transform: scale(1.1) rotate(10deg);
+        }
+        
+        /* Гарантии */
+        .guarantees-section {
+            padding: 120px 0;
+        }
+        
+        .guarantees-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 60px;
+            margin-top: 80px;
+        }
+        
+        .guarantee-card {
+            background: rgba(20, 20, 20, 0.85);
+            backdrop-filter: blur(20px);
+            border-radius: var(--border-radius);
+            padding: 45px 40px;
+            text-align: center;
+            transition: var(--transition);
+            border: 1px solid rgba(0, 255, 136, 0.15);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .guarantee-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+        
+        .guarantee-card:hover {
+            transform: translateY(-15px);
+            border-color: rgba(0, 255, 136, 0.5);
+            box-shadow: 0 20px 50px rgba(0, 255, 136, 0.25);
+        }
+        
+        .guarantee-icon {
+            width: 90px;
+            height: 90px;
+            background: rgba(0, 255, 136, 0.15);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 2.8rem;
+            color: var(--primary);
+            box-shadow: 0 0 30px rgba(0, 255, 136, 0.4);
+            transition: var(--transition);
+        }
+        
+        .guarantee-card:hover .guarantee-icon {
+            transform: scale(1.1) rotate(15deg);
+            background: rgba(0, 255, 136, 0.25);
+        }
+        
+        /* Футер */
+        .footer {
+            background: rgba(5, 5, 5, 0.97);
+            padding: 100px 0 60px;
+            margin-top: 150px;
+            border-top: 3px solid rgba(0, 255, 136, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+            box-shadow: 0 0 20px var(--primary);
+        }
+        
+        .footer-content {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-bottom: 70px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            text-shadow: 0 0 15px var(--primary);
+        }
+        
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Анимации */
+        @keyframes bgPulse {
+            0% { opacity: 0.8; }
+            100% { opacity: 1; }
+        }
+        
+        @keyframes logoGlow {
+            0% { box-shadow: 0 0 20px rgba(0, 255, 136, 0.5); }
+            100% { box-shadow: 0 0 30px rgba(0, 255, 136, 0.8), 0 0 40px rgba(0, 243, 255, 0.4); }
+        }
+        
+        @keyframes logoGlowHover {
+            0% { box-shadow: 0 0 30px rgba(0, 255, 136, 0.8); }
+            100% { box-shadow: 0 0 40px rgba(0, 255, 136, 1), 0 0 50px rgba(255, 0, 255, 0.6); }
+        }
+        
+        @keyframes titleGlow {
+            0% { text-shadow: 0 0 40px rgba(0, 255, 136, 0.6); }
+            100% { text-shadow: 0 0 50px rgba(0, 255, 136, 0.9), 0 0 70px rgba(0, 255, 136, 0.7); }
+        }
+        
+        @keyframes buttonGlow {
+            0% { box-shadow: 0 0 25px rgba(0, 255, 136, 0.6); }
+            100% { box-shadow: 0 0 35px rgba(0, 255, 136, 0.9), 0 0 45px rgba(0, 255, 136, 0.7); }
+        }
+        
+        @keyframes telegramGlow {
+            0% { box-shadow: 0 0 25px rgba(0, 136, 255, 0.6); }
+            100% { box-shadow: 0 0 35px rgba(0, 136, 255, 0.9), 0 0 45px rgba(0, 136, 255, 0.7); }
+        }
+        
+        @keyframes borderRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate {
+            animation: fadeInUp 0.8s ease forwards;
+            opacity: 0;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .compact-nav { flex-direction: column; gap: 20px; }
+            .compact-menu { gap: 20px; flex-wrap: wrap; justify-content: center; }
+            .compact-cta { padding: 12px 35px; min-width: 160px; }
+            .hero-title { font-size: 2.8rem; margin-bottom: 30px; }
+            .hero-section { padding: 120px 20px 80px; }
+            .pricing-section, .reviews-section, .guarantees-section { padding: 70px 0; }
+            .pricing-grid, .reviews-grid, .contact-grid, .guarantees-grid { 
+                grid-template-columns: 1fr; 
+                gap: 40px; 
+            }
+            .pricing-card { padding: 40px 30px; }
+            .pricing-card.popular { transform: none; }
+            .pricing-card.popular:hover { transform: translateY(-20px); }
+            .section-header { margin-bottom: 70px; }
+            .support-contact { padding: 50px 30px; margin: 70px 0; }
+            .contact-item { padding: 35px 25px; }
+            .contact-grid { gap: 40px; margin-top: 40px; }
+            .qr-section { padding: 50px 30px; margin: 80px 0; }
+            .qr-container { flex-direction: column; gap: 50px; text-align: center; }
+            .qr-code-container { width: 280px; height: 280px; }
+            .footer { padding: 80px 0 40px; margin-top: 100px; }
+            .footer-links { flex-direction: column; gap: 25px; margin-bottom: 50px; }
+            .mouse-follower { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Неоновый фон -->
+    <div class="neon-bg"></div>
+    
+    <!-- Огонёк за мышкой -->
+    <div class="mouse-follower" id="mouseFollower"></div>
+    
+    <!-- Компактное меню -->
+    <header class="compact-header">
+        <nav class="compact-nav">
+            <div class="compact-logo">
+                <div class="logo-container">
+                    <!-- Логотип из папки сайта -->
+                    <img src="Logo.png" alt="Fast Market Games Logo" class="logo-img" id="shopLogo">
+                </div>
+                <h1>FAST MARKET GAMES</h1>
+            </div>
+            <div class="compact-menu">
+                <a href="#pricing">Тарифы</a>
+                <a href="#reviews">Отзывы</a>
+                <a href="#guarantees">Гарантии</a>
+                <a href="#support">Поддержка</a>
+                <a href="privacy.html" target="_blank">Политика</a>
+                <a href="terms.html" target="_blank">Условия</a>
+                <a href="https://t.me/Fast_Market_Games_BOT" target="_blank" class="compact-cta">
+                    <i class="fab fa-telegram"></i> Купить
+                </a>
+            </div>
+        </nav>
+    </header>
+    
+    <!-- Основной контент -->
+    <main>
+        <!-- Герой секция -->
+        <section class="hero-section">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1;">
+                <h1 class="hero-title animate">XBOX GAME PASS ULTIMATE</h1>
+                <p class="hero-subtitle animate">Более 100 высококачественных игр для консолей и ПК. Новые игры добавляются постоянно. Играйте вместе с друзьями и откройте для себя следующую любимую игру!</p>
+                <a href="#pricing" class="btn btn-telegram animate" style="max-width: 350px; margin: 0 auto;">
+                    <i class="fab fa-telegram-plane"></i> Выбрать подписку
+                </a>
+            </div>
+        </section>
+        
+        <!-- Тарифы -->
+        <section id="pricing" class="pricing-section">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1;">
+                <div class="section-header">
+                    <h2 class="section-title">Выберите подписку</h2>
+                    <p class="section-subtitle">Лучшее предложение для геймеров. Все подписки включают полный доступ к библиотеке Xbox Game Pass</p>
+                </div>
+                
+                <div class="pricing-grid">
+                    <!-- 1 месяц -->
+                    <div class="pricing-card animate">
+                        <div class="pricing-content">
+                            <div class="pricing-duration">1 МЕСЯЦ</div>
+                            <div class="pricing-price">250 <span>руб.</span></div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check-circle"></i> Более 100 игр</li>
+                                <li><i class="fas fa-check-circle"></i> Консоль + ПК</li>
+                                <li><i class="fas fa-check-circle"></i> Мультиплеер</li>
+                                <li><i class="fas fa-check-circle"></i> EA Play включен</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="https://t.me/Fast_Market_Games_BOT" target="_blank" class="btn">
+                                <i class="fab fa-telegram"></i> Купить в боте
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- 3 месяца -->
+                    <div class="pricing-card popular animate">
+                        <div class="popular-badge">ВЫГОДА</div>
+                        <div class="pricing-content">
+                            <div class="pricing-duration">3 МЕСЯЦА</div>
+                            <div class="pricing-price">700 <span>руб.</span></div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check-circle"></i> Более 100 игр</li>
+                                <li><i class="fas fa-check-circle"></i> Консоль + ПК</li>
+                                <li><i class="fas fa-check-circle"></i> Мультиплеер</li>
+                                <li><i class="fas fa-check-circle"></i> EA Play включен</li>
+                                <li><i class="fas fa-check-circle"></i> Эксклюзивные скидки</li>
+                                <li><i class="fas fa-check-circle"></i> Приоритетная поддержка</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="https://t.me/Fast_Market_Games_BOT" target="_blank" class="btn">
+                                <i class="fab fa-telegram"></i> Купить в боте
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- 6 месяцев -->
+                    <div class="pricing-card animate">
+                        <div class="pricing-content">
+                            <div class="pricing-duration">6 МЕСЯЦЕВ</div>
+                            <div class="pricing-price">1550 <span>руб.</span></div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check-circle"></i> Более 100 игр</li>
+                                <li><i class="fas fa-check-circle"></i> Консоль + ПК</li>
+                                <li><i class="fas fa-check-circle"></i> Мультиплеер</li>
+                                <li><i class="fas fa-check-circle"></i> EA Play включен</li>
+                                <li><i class="fas fa-check-circle"></i> Эксклюзивные скидки</li>
+                                <li><i class="fas fa-check-circle"></i> Приоритетная поддержка</li>
+                                <li><i class="fas fa-check-circle"></i> Персональный менеджер</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="https://t.me/Fast_Market_Games_BOT" target="_blank" class="btn">
+                                <i class="fab fa-telegram"></i> Купить в боте
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- 12 месяцев -->
+                    <div class="pricing-card animate">
+                        <div class="pricing-content">
+                            <div class="pricing-duration">12 МЕСЯЦЕВ</div>
+                            <div class="pricing-price">3000 <span>руб.</span></div>
+                            <ul class="pricing-features">
+                                <li><i class="fas fa-check-circle"></i> Более 100 игр</li>
+                                <li><i class="fas fa-check-circle"></i> Консоль + ПК</li>
+                                <li><i class="fas fa-check-circle"></i> Мультиплеер</li>
+                                <li><i class="fas fa-check-circle"></i> EA Play включен</li>
+                                <li><i class="fas fa-check-circle"></i> Эксклюзивные скидки</li>
+                                <li><i class="fas fa-check-circle"></i> Приоритетная поддержка</li>
+                                <li><i class="fas fa-check-circle"></i> Персональный менеджер</li>
+                                <li><i class="fas fa-check-circle"></i> VIP-статус + 1 игра в подарок</li>
+                            </ul>
+                        </div>
+                        <div class="pricing-footer">
+                            <a href="https://t.me/Fast_Market_Games_BOT" target="_blank" class="btn">
+                                <i class="fab fa-telegram"></i> Купить в боте
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Контакты поддержки -->
+        <section id="support" class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1;">
+            <div class="support-contact animate">
+                <h2 style="font-family: 'Orbitron', sans-serif; font-size: 3rem; margin-bottom: 50px; color: white; position: relative; z-index: 1;">
+                    <i class="fas fa-headset"></i> Контакты поддержки
+                </h2>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fab fa-telegram"></i>
+                        </div>
+                        <h3 style="color: white; margin-bottom: 25px; font-size: 1.5rem;">Telegram поддержка</h3>
+                        <p style="color: #ddd; margin-bottom: 30px; font-size: 1.1rem;">Свяжитесь с нами в Telegram для быстрой помощи. Отвечаем в течение 15 минут.</p>
+                        <a href="https://t.me/No_i_Lord" target="_blank" class="contact-link">
+                            <i class="fab fa-telegram"></i> @No_i_Lord
+                        </a>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3 style="color: white; margin-bottom: 25px; font-size: 1.5rem;">Телефон поддержки</h3>
+                        <p style="color: #ddd; margin-bottom: 30px; font-size: 1.1rem;">Звоните по любому вопросу. Работаем с 10:00 до 22:00 по московскому времени.</p>
+                        <a href="tel:89189705506" class="contact-link">
+                            <i class="fas fa-phone"></i> 8-918-970-55-06
+                        </a>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 style="color: white; margin-bottom: 25px; font-size: 1.5rem;">Telegram бот</h3>
+                        <p style="color: #ddd; margin-bottom: 30px; font-size: 1.1rem;">Основной бот для покупки подписок. Автоматическая выдача ключей после оплаты.</p>
+                        <a href="https://t.me/Fast_Market_Games_BOT" target="_blank" class="contact-link">
+                            <i class="fab fa-telegram"></i> @Fast_Market_Games_BOT
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- QR секция -->
+        <section id="qr" class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1;">
+            <div class="qr-section animate">
+                <div class="qr-container">
+                    <div class="qr-code-container">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://t.me/Fast_Market_Games_BOT&format=png&color=00ff88&bgcolor=0a0a0a&qzone=2" 
+                             alt="QR код для Telegram бота @Fast_Market_Games_BOT">
+                    </div>
+                    <div class="qr-info">
+                        <h2 style="font-family: 'Orbitron', sans-serif; font-size: 2.8rem; margin-bottom: 30px; color: white; text-shadow: 0 0 20px white;">
+                            Сканируйте и покупайте
+                        </h2>
+                        <p style="font-size: 1.3rem; color: #ddd; margin-bottom: 35px; line-height: 1.7;">
+                            Используйте QR-код для быстрого перехода в Telegram-бота. Отсканируйте код камерой смартфона или нажмите кнопку ниже.
+                        </p>
+                        <div style="background: rgba(0, 255, 136, 0.15); padding: 25px; border-radius: 12px; margin: 35px 0; border-left: 4px solid var(--primary); border-right: 4px solid var(--neon-blue);">
+                            <div style="font-family: 'Orbitron', monospace; font-size: 1.6rem; color: white; letter-spacing: 2px; text-shadow: 0 0 10px white;">@Fast_Market_Games_BOT</div>
+                            <div style="color: #aaa; font-size: 1rem; margin-top: 10px;">Имя бота в Telegram</div>
+                        </div>
+                        <a href="https://t.me/Fast_Market_Games_BOT" target="_blank" class="btn btn-telegram" style="max-width: 380px;">
+                            <i class="fab fa-telegram-plane"></i> Открыть бота в Telegram
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Отзывы -->
+        <section id="reviews" class="reviews-section">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1;">
+                <div class="section-header">
+                    <h2 class="section-title">Отзывы покупателей</h2>
+                    <p class="section-subtitle">Что говорят геймеры, которые уже купили подписку через нашего бота</p>
+                </div>
+                
+                <div class="reviews-grid">
+                    <div class="review-card animate">
+                        <div class="review-header">
+                            <div class="review-avatar">Д</div>
+                            <div class="review-info">
+                                <h4 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: white; margin-bottom: 8px;">
+                                    Дмитрий Иванов
+                                </h4>
+                                <div style="color: var(--warning); font-size: 1.1rem;">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p style="color: #eee; line-height: 1.8; font-size: 1.1rem;">
+                            "Купил подписку на 3 месяца через @Fast_Market_Games_BOT. Ключ пришел сразу после оплаты, активировался без проблем. Бот удобный, все интуитивно понятно. Особенно понравилась мгновенная доставка!"
+                        </p>
+                    </div>
+                    
+                    <div class="review-card animate">
+                        <div class="review-header">
+                            <div class="review-avatar">К</div>
+                            <div class="review-info">
+                                <h4 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: white; margin-bottom: 8px;">
+                                    Кирилл Волков
+                                </h4>
+                                <div style="color: var(--warning); font-size: 1.1rem;">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p style="color: #eee; line-height: 1.8; font-size: 1.1rem;">
+                            "Лучший способ купить Game Pass! Взял 6 месяцев, сэкономил прилично. QR-код на сайте очень удобный - сразу перешел в бота с телефона. Ключ пришел за 2 минуты. Теперь всем друзьям рекомендую!"
+                        </p>
+                    </div>
+                    
+                    <div class="review-card animate">
+                        <div class="review-header">
+                            <div class="review-avatar">А</div>
+                            <div class="review-info">
+                                <h4 style="font-family: 'Montserrat', sans-serif; font-size: 1.4rem; color: white; margin-bottom: 8px;">
+                                    Анна Смирнова
+                                </h4>
+                                <div style="color: var(--warning); font-size: 1.1rem;">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p style="color: #eee; line-height: 1.8; font-size: 1.1rem;">
+                            "Пользуюсь уже полгода, продлеваю подписку через этого бота. Всегда все четко, ключи работают. Поддержка в боте отвечает быстро, даже ночью помогли с активацией. Рекомендую всем геймерам!"
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Гарантии -->
+        <section id="guarantees" class="guarantees-section">
+            <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1;">
+                <div class="section-header">
+                    <h2 class="section-title">Наши гарантии</h2>
+                    <p class="section-subtitle">Мы обеспечиваем полную безопасность и мгновенную доставку ключей</p>
+                </div>
+                
+                <div class="guarantees-grid">
+                    <div class="guarantee-card animate">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 style="color: white; margin-bottom: 25px; font-size: 1.5rem;">100% безопасность</h3>
+                        <p style="color: #eee; line-height: 1.7;">Все ключи от официальных дистрибьюторов. Полная легальность и безопасность аккаунта.</p>
+                    </div>
+                    
+                    <div class="guarantee-card animate">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-bolt"></i>
+                        </div>
+                        <h3 style="color: white; margin-bottom: 25px; font-size: 1.5rem;">Мгновенная доставка</h3>
+                        <p style="color: #eee; line-height: 1.7;">Ключ выдается автоматически сразу после оплаты. Начинайте играть через 1-2 минуты.</p>
+                    </div>
+                    
+                    <div class="guarantee-card animate">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3 style="color: white; margin-bottom: 25px; font-size: 1.5rem;">Поддержка 24/7</h3>
+                        <p style="color: #eee; line-height: 1.7;">Служба поддержки работает круглосуточно в Telegram-боте. Помощь с активацией.</p>
+                    </div>
+                    
+                    <div class="guarantee-card animate">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-medal"></i>
+                        </div>
+                        <h3 style="color: white; margin-bottom: 25px; font-size: 1.5rem;">Гарантия возврата</h3>
+                        <p style="color: #eee; line-height: 1.7;">Возврат денег в течение 24 часов при проблемах с ключом. Ваше удовлетворение — приоритет.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1;">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="https://t.me/Fast_Market_Games_BOT" target="_blank">
+                        <i class="fab fa-telegram"></i> Telegram-бот
+                    </a>
+                    <a href="privacy.html" target="_blank">Политика конфиденциальности</a>
+                    <a href="terms.html" target="_blank">Условия использования</a>
+                    <a href="#support">Поддержка</a>
+                    <a href="https://t.me/No_i_Lord" target="_blank">Telegram поддержка</a>
+                </div>
+                <p class="copyright" style="color: #888; font-size: 0.95rem; max-width: 800px; margin: 0 auto; line-height: 1.6;">
+                    &copy; 2024 Fast Market Games. Xbox Game Pass Ultimate. Данный сайт является реселлером официальных подписок.<br>
+                    Все товарные знаки принадлежат их правообладателям. Покупка осуществляется через Telegram-бота @Fast_Market_Games_BOT.
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Огонёк за мышкой
+        const mouseFollower = document.getElementById('mouseFollower');
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let followerX = mouseX;
+        let followerY = mouseY;
+        
+        // Инициализируем позицию огонька
+        mouseFollower.style.left = mouseX + 'px';
+        mouseFollower.style.top = mouseY + 'px';
+        
+        // Плавное отслеживание мыши
+        document.addEventListener('mousemove', function(e) {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+        
+        // Плавная анимация огонька
+        function animateFollower() {
+            // Плавное следование
+            const dx = mouseX - followerX;
+            const dy = mouseY - followerY;
+            
+            followerX += dx * 0.2;
+            followerY += dy * 0.2;
+            
+            // Применяем позицию
+            mouseFollower.style.left = followerX + 'px';
+            mouseFollower.style.top = followerY + 'px';
+            
+            // Меняем цвет и размер в зависимости от скорости
+            const speed = Math.sqrt(dx * dx + dy * dy);
+            const size = 24 + Math.min(speed * 0.1, 12);
+            const hue = (followerX / window.innerWidth) * 360;
+            
+            mouseFollower.style.width = size + 'px';
+            mouseFollower.style.height = size + 'px';
+            mouseFollower.style.background = `radial-gradient(circle, hsl(${hue}, 100%, 65%) 0%, transparent 70%)`;
+            
+            requestAnimationFrame(animateFollower);
+        }
+        
+        animateFollower();
+        
+        // Анимация появления элементов
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        document.querySelectorAll('.animate').forEach(el => {
+            el.style.opacity = '0';
+            observer.observe(el);
+        });
+        
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Адаптивное отключение огонька на мобильных
+        function checkMobile() {
+            if (window.innerWidth <= 768) {
+                mouseFollower.style.display = 'none';
+            } else {
+                mouseFollower.style.display = 'block';
+            }
+        }
+        
+        window.addEventListener('resize', checkMobile);
+        checkMobile(); // Проверяем при загрузке
+    </script>
+</body>
+</html>
