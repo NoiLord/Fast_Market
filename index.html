@@ -3,86 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    
-    <!-- Основные мета-теги -->
     <title>Fast Market Games | Xbox Game Pass Ultimate | Официальные подписки</title>
-    <meta name="description" content="Купить Xbox Game Pass Ultimate по лучшей цене! Официальные подписки, мгновенная доставка ключей через Telegram-бота. Создание сайтов, покупка игр Xbox и PlayStation, аккаунты с играми.">
-    <meta name="keywords" content="Xbox Game Pass, купить Xbox Game Pass, Game Pass Ultimate, Xbox подписка, купить игры Xbox, создание сайтов, Telegram бот, игровые аккаунты">
-    <meta name="author" content="Fast Market Games">
-    <meta name="robots" content="index, follow">
-    
-    <!-- Open Graph для социальных сетей -->
-    <meta property="og:title" content="Fast Market Games | Xbox Game Pass Ultimate">
-    <meta property="og:description" content="Купить Xbox Game Pass Ultimate по лучшей цене! Официальные подписки, мгновенная доставка ключей.">
-    <meta property="og:image" content="https://ваш-сайт.ru/Logo.png">
-    <meta property="og:url" content="https://ваш-сайт.ru">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Fast Market Games">
-    <meta property="og:locale" content="ru_RU">
-    
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Fast Market Games | Xbox Game Pass Ultimate">
-    <meta name="twitter:description" content="Купить Xbox Game Pass Ultimate по лучшей цене! Официальные подписки, мгновенная доставка ключей через Telegram-бота.">
-    <meta name="twitter:image" content="https://ваш-сайт.ru/Logo.png">
-    <meta name="twitter:site" content="@Fast_Market_Games">
-    
-    <!-- Дополнительные мета-теги -->
-    <meta name="theme-color" content="#00ff88">
-    <meta name="apple-mobile-web-app-title" content="Fast Market Games">
-    <meta name="application-name" content="Fast Market Games">
-    <meta name="msapplication-TileColor" content="#00ff88">
-    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
-    
-    <!-- Фавиконы разных размеров -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
-    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#00ff88">
-    <link rel="shortcut icon" href="/favicon.ico">
-    
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://ваш-сайт.ru">
-    
-    <!-- Предзагрузка важных ресурсов -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500;700&display=swap" as="style">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style">
-    <link rel="preload" href="Logo.png" as="image">
-    
-    <!-- Стили и шрифты -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- Schema.org структурированные данные -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "Fast Market Games",
-        "alternateName": "FM Games",
-        "url": "https://ваш-сайт.ru",
-        "description": "Официальный реселлер Xbox Game Pass Ultimate. Мгновенная доставка ключей через Telegram-бота. Создание сайтов, покупка игр для Xbox и PlayStation.",
-        "publisher": {
-            "@type": "Organization",
-            "name": "Fast Market Games",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "https://ваш-сайт.ru/Logo.png",
-                "width": "512",
-                "height": "512"
-            }
-        },
-        "offers": {
-            "@type": "Offer",
-            "category": "GameSubscription",
-            "price": "250",
-            "priceCurrency": "RUB",
-            "availability": "https://schema.org/InStock"
-        }
-    }
-    </script>
-    
     <style>
         :root {
             --primary: #00ff88;
@@ -573,6 +496,63 @@
             width: 100%;
         }
         
+        /* Анимации для QR кода */
+        @keyframes qrPulse {
+            0% {
+                box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+                border-color: rgba(0, 255, 136, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 35px rgba(0, 255, 136, 0.8), 
+                            0 0 50px rgba(0, 243, 255, 0.4);
+                border-color: rgba(0, 255, 136, 0.6);
+                transform: scale(1.02);
+            }
+            100% {
+                box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+                border-color: rgba(0, 255, 136, 0.3);
+            }
+        }
+
+        @keyframes qrGlow {
+            0%, 100% {
+                filter: brightness(1) drop-shadow(0 0 5px rgba(0, 255, 136, 0.5));
+            }
+            50% {
+                filter: brightness(1.1) drop-shadow(0 0 15px rgba(0, 255, 136, 0.8));
+            }
+        }
+
+        @keyframes qrBorder {
+            0% {
+                border-color: rgba(0, 255, 136, 0.3);
+            }
+            33% {
+                border-color: rgba(0, 243, 255, 0.5);
+            }
+            66% {
+                border-color: rgba(255, 0, 255, 0.5);
+            }
+            100% {
+                border-color: rgba(0, 255, 136, 0.3);
+            }
+        }
+
+        @keyframes scanLine {
+            0% {
+                top: 5%;
+                opacity: 0.8;
+            }
+            50% {
+                top: 95%;
+                opacity: 1;
+            }
+            100% {
+                top: 5%;
+                opacity: 0.8;
+            }
+        }
+        
         /* QR секция */
         .qr-section {
             background: rgba(20, 20, 20, 0.9);
@@ -604,13 +584,108 @@
             padding: 15px;
             box-shadow: 0 0 25px rgba(0, 255, 136, 0.3);
             border: 1px solid rgba(0, 255, 136, 0.3);
+            animation: qrPulse 4s infinite ease-in-out, 
+                       qrBorder 6s infinite linear;
+            overflow: hidden;
+            transition: var(--transition);
         }
-        
+
+        .qr-code-container:hover {
+            animation: qrPulse 1.5s infinite ease-in-out, 
+                       qrBorder 4s infinite linear;
+            transform: scale(1.03);
+        }
+
         .qr-code-container img {
             width: 100%;
             height: 100%;
             object-fit: contain;
             border-radius: 8px;
+            animation: qrGlow 3s infinite ease-in-out;
+        }
+
+        /* Сканирующая линия эффект */
+        .qr-code-container::after {
+            content: '';
+            position: absolute;
+            top: 5%;
+            left: 5%;
+            right: 5%;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                        transparent 0%, 
+                        var(--primary) 50%, 
+                        transparent 100%);
+            box-shadow: 0 0 10px var(--primary);
+            animation: scanLine 3s infinite linear;
+            z-index: 2;
+            border-radius: 2px;
+        }
+
+        /* Угловые декоративные элементы */
+        .qr-code-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid transparent;
+            border-image: linear-gradient(45deg, 
+                         var(--primary), 
+                         var(--neon-blue), 
+                         var(--neon-pink), 
+                         var(--primary)) 1;
+            border-radius: 12px;
+            animation: qrBorder 8s infinite linear;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Неоновые точки в углах */
+        .qr-code-container .corner {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary);
+            z-index: 1;
+        }
+
+        .qr-code-container .corner:nth-child(1) {
+            top: 10px;
+            left: 10px;
+        }
+
+        .qr-code-container .corner:nth-child(2) {
+            top: 10px;
+            right: 10px;
+        }
+
+        .qr-code-container .corner:nth-child(3) {
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .qr-code-container .corner:nth-child(4) {
+            bottom: 10px;
+            right: 10px;
+        }
+
+        /* Дополнительный эффект при наведении на QR */
+        .qr-code-container.qr-hover {
+            animation: qrPulse 0.8s infinite ease-in-out, 
+                       qrBorder 2s infinite linear !important;
+        }
+
+        .qr-code-container.qr-hover::after {
+            animation: scanLine 1s infinite linear;
+            background: linear-gradient(90deg, 
+                        transparent 0%, 
+                        var(--neon-blue) 50%, 
+                        transparent 100%);
+            box-shadow: 0 0 15px var(--neon-blue);
         }
         
         /* Отзывы */
@@ -787,17 +862,6 @@
             display: block;
         }
         
-        /* Анимации */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .animate {
-            animation: fadeInUp 0.5s ease forwards;
-            opacity: 0;
-        }
-        
         /* Медиазапросы для десктопа */
         @media (min-width: 768px) {
             body {
@@ -947,6 +1011,22 @@
                 padding: 15px;
             }
         }
+        
+        /* Медиазапрос для отключения некоторых анимаций на мобильных устройствах */
+        @media (max-width: 768px) {
+            .qr-code-container {
+                animation: qrPulse 6s infinite ease-in-out;
+            }
+            
+            .qr-code-container::after {
+                animation: scanLine 4s infinite linear;
+            }
+            
+            .qr-code-container:hover {
+                transform: none;
+                animation: qrPulse 6s infinite ease-in-out;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1005,9 +1085,9 @@
         <!-- Герой секция -->
         <section class="hero-section">
             <div class="container" style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
-                <h1 class="hero-title animate">XBOX GAME PASS ULTIMATE</h1>
-                <p class="hero-subtitle animate">Более 100 высококачественных игр для консолей и ПК. Новые игры добавляются постоянно. Играйте вместе с друзьями и откройте для себя следующую любимую игру!</p>
-                <a href="#pricing" class="btn btn-telegram animate" style="max-width: 280px; margin: 0 auto; display: block;">
+                <h1 class="hero-title">XBOX GAME PASS ULTIMATE</h1>
+                <p class="hero-subtitle">Более 100 высококачественных игр для консолей и ПК. Новые игры добавляются постоянно. Играйте вместе с друзьями и откройте для себя следующую любимую игру!</p>
+                <a href="#pricing" class="btn btn-telegram" style="max-width: 280px; margin: 0 auto; display: block;">
                     <i class="fab fa-telegram-plane"></i> Выбрать подписку
                 </a>
             </div>
@@ -1023,7 +1103,7 @@
                 
                 <div class="pricing-grid">
                     <!-- 1 месяц -->
-                    <div class="pricing-card animate">
+                    <div class="pricing-card">
                         <div class="pricing-content">
                             <div class="pricing-duration">1 МЕСЯЦ</div>
                             <div class="pricing-price">250 <span>руб.</span></div>
@@ -1042,7 +1122,7 @@
                     </div>
                     
                     <!-- 3 месяца -->
-                    <div class="pricing-card popular animate">
+                    <div class="pricing-card popular">
                         <div class="popular-badge">ВЫГОДА</div>
                         <div class="pricing-content">
                             <div class="pricing-duration">3 МЕСЯЦА</div>
@@ -1064,7 +1144,7 @@
                     </div>
                     
                     <!-- 6 месяцев -->
-                    <div class="pricing-card animate">
+                    <div class="pricing-card">
                         <div class="pricing-content">
                             <div class="pricing-duration">6 МЕСЯЦЕВ</div>
                             <div class="pricing-price">1550 <span>руб.</span></div>
@@ -1086,7 +1166,7 @@
                     </div>
                     
                     <!-- 12 месяцев -->
-                    <div class="pricing-card animate">
+                    <div class="pricing-card">
                         <div class="pricing-content">
                             <div class="pricing-duration">12 МЕСЯЦЕВ</div>
                             <div class="pricing-price">3000 <span>руб.</span></div>
@@ -1121,7 +1201,7 @@
                 
                 <div class="services-grid">
                     <!-- Создание сайтов -->
-                    <div class="service-card animate">
+                    <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-code"></i>
                         </div>
@@ -1142,7 +1222,7 @@
                     </div>
                     
                     <!-- Покупка игр -->
-                    <div class="service-card animate">
+                    <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-gamepad"></i>
                         </div>
@@ -1156,14 +1236,14 @@
                             <li><i class="fas fa-check"></i> Мгновенная доставка</li>
                         </ul>
                         <div class="pricing-footer">
-                            <a href="https://t.me/Fast_Market_Games_BOT" target="_blank" class="btn" style="background: linear-gradient(90deg, var(--neon-pink), var(--accent));">
+                            <a href="https://t.me/No_i_Lord" target="_blank" class="btn" style="background: linear-gradient(90deg, var(--neon-pink), var(--accent));">
                                 <i class="fab fa-telegram"></i> Узнать цену
                             </a>
                         </div>
                     </div>
                     
                     <!-- Аккаунты с играми -->
-                    <div class="service-card animate">
+                    <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-user-circle"></i>
                         </div>
@@ -1188,7 +1268,7 @@
         
         <!-- Контакты поддержки -->
         <section id="support" style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
-            <div class="support-contact animate">
+            <div class="support-contact">
                 <h2 style="font-family: 'Orbitron', sans-serif; font-size: 1.8rem; margin-bottom: 25px; color: white; position: relative; z-index: 1;">
                     <i class="fas fa-headset"></i> Контакты поддержки
                 </h2>
@@ -1231,11 +1311,16 @@
         
         <!-- QR секция -->
         <section id="qr" style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
-            <div class="qr-section animate">
+            <div class="qr-section">
                 <div class="qr-container">
                     <div class="qr-code-container">
                         <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://t.me/Fast_Market_Games_BOT&format=png&color=00ff88&bgcolor=0a0a0a&qzone=2" 
                              alt="QR код для Telegram бота @Fast_Market_Games_BOT">
+                        <!-- Декоративные угловые элементы -->
+                        <div class="corner"></div>
+                        <div class="corner"></div>
+                        <div class="corner"></div>
+                        <div class="corner"></div>
                     </div>
                     <div class="qr-info">
                         <h2 style="font-family: 'Orbitron', sans-serif; font-size: 1.8rem; margin-bottom: 15px; color: white;">
@@ -1265,7 +1350,7 @@
                 </div>
                 
                 <div class="reviews-grid">
-                    <div class="review-card animate">
+                    <div class="review-card">
                         <div class="review-header">
                             <div class="review-avatar">Д</div>
                             <div class="review-info">
@@ -1286,7 +1371,7 @@
                         </p>
                     </div>
                     
-                    <div class="review-card animate">
+                    <div class="review-card">
                         <div class="review-header">
                             <div class="review-avatar">К</div>
                             <div class="review-info">
@@ -1307,7 +1392,7 @@
                         </p>
                     </div>
                     
-                    <div class="review-card animate">
+                    <div class="review-card">
                         <div class="review-header">
                             <div class="review-avatar">А</div>
                             <div class="review-info">
@@ -1340,7 +1425,7 @@
                 </div>
                 
                 <div class="guarantees-grid">
-                    <div class="guarantee-card animate">
+                    <div class="guarantee-card">
                         <div class="guarantee-icon">
                             <i class="fas fa-shield-alt"></i>
                         </div>
@@ -1348,7 +1433,7 @@
                         <p style="color: #eee; line-height: 1.5; font-size: 0.9rem;">Все ключи от официальных дистрибьюторов. Полная легальность и безопасность аккаунта.</p>
                     </div>
                     
-                    <div class="guarantee-card animate">
+                    <div class="guarantee-card">
                         <div class="guarantee-icon">
                             <i class="fas fa-bolt"></i>
                         </div>
@@ -1356,7 +1441,7 @@
                         <p style="color: #eee; line-height: 1.5; font-size: 0.9rem;">Ключ выдается автоматически сразу после оплаты. Начинайте играть через 1-2 минуты.</p>
                     </div>
                     
-                    <div class="guarantee-card animate">
+                    <div class="guarantee-card">
                         <div class="guarantee-icon">
                             <i class="fas fa-headset"></i>
                         </div>
@@ -1364,7 +1449,7 @@
                         <p style="color: #eee; line-height: 1.5; font-size: 0.9rem;">Служба поддержки работает круглосуточно в Telegram-боте. Помощь с активацией.</p>
                     </div>
                     
-                    <div class="guarantee-card animate">
+                    <div class="guarantee-card">
                         <div class="guarantee-icon">
                             <i class="fas fa-medal"></i>
                         </div>
@@ -1451,21 +1536,6 @@
             });
         });
         
-        // Анимация появления элементов
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        document.querySelectorAll('.animate').forEach(el => {
-            el.style.opacity = '0';
-            observer.observe(el);
-        });
-        
         // Улучшение работы на мобильных устройствах
         document.addEventListener('touchstart', function() {}, {passive: true});
         
@@ -1478,6 +1548,21 @@
             }
             lastTouchEnd = now;
         }, false);
+        
+        // Улучшение анимации QR кода при наведении
+        const qrContainer = document.querySelector('.qr-code-container');
+        if (qrContainer) {
+            qrContainer.addEventListener('mouseenter', function() {
+                this.style.animationDuration = '1.5s, 3s';
+                // Добавляем класс для более интенсивной анимации
+                this.classList.add('qr-hover');
+            });
+            
+            qrContainer.addEventListener('mouseleave', function() {
+                this.style.animationDuration = '4s, 6s';
+                this.classList.remove('qr-hover');
+            });
+        }
     </script>
 </body>
 </html>
