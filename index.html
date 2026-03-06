@@ -20,8 +20,8 @@
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Fast Market Games | Xbox Game Pass Ultimate | Официальные подписки</title>
-    <meta name="description" content="Купить Xbox Game Pass и игры для PS/Xbox | Fast Market. Магазин с мгновенной доставкой цифровых товаров: подписки Game Pass Ultimate, ключи игр для PlayStation, Xbox, а также эксклюзивные аккаунты и готовые сайты. Работаем быстро и надежно.">
+    <title>FAST GAME | Xbox Game Pass Ultimate | Официальные подписки</title>
+    <meta name="description" content="Купить Xbox Game Pass и игры для PS/Xbox | FAST GAME. Магазин с мгновенной доставкой цифровых товаров: подписки Game Pass Ultimate, ключи игр для PlayStation, Xbox, а также эксклюзивные аккаунты и готовые сайты. Работаем быстро и надежно.">
     <link rel="icon" href="favicon-16x16.png" sizes="16x16" type="image/png">
     <link rel="icon" href="favicon-32x32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="favicon-96x96.png" sizes="96x96" type="image/png">
@@ -361,6 +361,8 @@
             box-shadow: 0 0 12px rgba(0, 255, 136, 0.5);
             text-align: center;
             line-height: 1;
+            white-space: nowrap;
+            min-height: 48px;
         }
         
         .btn:hover {
@@ -371,6 +373,10 @@
         .btn-telegram {
             background: linear-gradient(90deg, var(--telegram), #00ccff);
             box-shadow: 0 0 12px rgba(0, 136, 255, 0.5);
+        }
+        
+        .pricing-footer {
+            margin-top: auto;
         }
         
         /* Услуги */
@@ -778,6 +784,7 @@
             padding: 20px;
             text-align: center;
             border: 1px solid rgba(0, 255, 136, 0.15);
+            position: relative;
         }
         
         .guarantee-card::before {
@@ -802,6 +809,15 @@
             font-size: 1.5rem;
             color: var(--primary);
             box-shadow: 0 0 12px rgba(0, 255, 136, 0.3);
+        }
+        
+        /* Сетка для СММ (фиксированная ширина карточек) */
+        .smm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 280px);
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
         }
         
         /* Футер */
@@ -1056,6 +1072,36 @@
                 animation: qrPulse 6s infinite ease-in-out;
             }
         }
+
+        /* Центрирование заголовка СММ */
+        .smm-header {
+            text-align: center;
+            margin: 40px 0 20px;
+            width: 100%;
+        }
+        .smm-header h3 {
+            display: inline-block;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+            margin: 0;
+            padding: 0 15px;
+        }
+
+        /* ========== АНИМАЦИЯ ПРИ СКРОЛЛЕ ========== */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
     <link rel="search" type="application/opensearchdescription+xml" title="Поиск по сайту" href="opensearch.xml">
 </head>
@@ -1072,6 +1118,7 @@
         <div class="mobile-menu-links">
             <a href="#pricing">Подписки</a>
             <a href="#services">Услуги</a>
+            <a href="#accounts">Аккаунты</a>
             <a href="#reviews">Отзывы</a>
             <a href="#guarantees">Гарантии</a>
             <a href="#support">Поддержка</a>
@@ -1083,18 +1130,19 @@
         </div>
     </div>
     
-    <!-- Компактное меню -->
+    <!-- Компактное меню (без анимации, всегда видимо) -->
     <header class="compact-header">
         <nav class="compact-nav">
             <div class="compact-logo">
                 <div class="logo-container">
-                    <img src="Logo.png" alt="Fast Market Games Logo" class="logo-img" id="shopLogo">
+                    <img src="Logo.png" alt="FAST GAME Logo" class="logo-img" id="shopLogo">
                 </div>
-                <h1>FAST MARKET GAMES</h1>
+                <h1>FAST GAME</h1>
             </div>
             <div class="compact-menu">
                 <a href="#pricing">Подписки</a>
                 <a href="#services">Услуги</a>
+                <a href="#accounts">Аккаунты</a>
                 <a href="#reviews">Отзывы</a>
                 <a href="#guarantees">Гарантии</a>
                 <a href="#support">Поддержка</a>
@@ -1112,11 +1160,11 @@
     
     <!-- Основной контент -->
     <main>
-        <!-- Герой секция -->
-        <section class="hero-section">
+        <!-- Герой секция (появляется при скролле) -->
+        <section class="hero-section animate-on-scroll">
             <div class="container" style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
                 <h1 class="hero-title">XBOX GAME PASS ULTIMATE</h1>
-                <p class="hero-subtitle">Более 100 высококачественных игр для консолей и ПК. Новые игры добавляются постоянно. Играйте вместе с друзьями и откройте для себя следующую любимую игру!</p>
+                <p class="hero-subtitle">Более 450 высококачественных игр для консолей и ПК. Новые игры добавляются постоянно. Играйте вместе с друзьями и откройте для себя следующую любимую игру!</p>
                 <a href="#pricing" class="btn btn-telegram" style="max-width: 280px; margin: 0 auto; display: block;">
                     <i class="fab fa-telegram-plane"></i> Выбрать подписку
                 </a>
@@ -1124,24 +1172,24 @@
         </section>
         
         <!-- Тарифы -->
-        <section id="pricing" class="pricing-section">
+        <section id="pricing" class="pricing-section animate-on-scroll">
             <div class="container" style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
                 <div class="section-header">
-                    <h2 class="section-title">Подписки Xbox Game Pass</h2>
-                    <p class="section-subtitle">Выберите оптимальный вариант для себя</p>
+                    <h2 class="section-title section-title-editable">Подписки Xbox Game Pass</h2>
+                    <p class="section-subtitle section-subtitle-editable">Выберите оптимальный вариант для себя</p>
                 </div>
                 
-                <div class="pricing-grid">
+                <div class="pricing-grid" id="pricing-grid">
                     <!-- 1 месяц -->
                     <div class="pricing-card">
                         <div class="pricing-content">
-                            <div class="pricing-duration">1 МЕСЯЦ</div>
-                            <div class="pricing-price">250 <span>руб.</span></div>
+                            <div class="pricing-duration editable">1 МЕСЯЦ</div>
+                            <div class="pricing-price editable">900 <span>руб.</span></div>
                             <ul class="pricing-features">
-                                <li><i class="fas fa-check-circle"></i> Более 100 игр</li>
-                                <li><i class="fas fa-check-circle"></i> Консоль + ПК</li>
-                                <li><i class="fas fa-check-circle"></i> Мультиплеер</li>
-                                <li><i class="fas fa-check-circle"></i> EA Play включен</li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">Более 450 игр</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">Консоль + ПК</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">Мультиплеер</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">EA Play включен</span></li>
                             </ul>
                         </div>
                         <div class="pricing-footer">
@@ -1155,15 +1203,15 @@
                     <div class="pricing-card popular">
                         <div class="popular-badge">ВЫГОДА</div>
                         <div class="pricing-content">
-                            <div class="pricing-duration">3 МЕСЯЦА</div>
-                            <div class="pricing-price">700 <span>руб.</span></div>
+                            <div class="pricing-duration editable">3 МЕСЯЦА</div>
+                            <div class="pricing-price editable">2500 <span>руб.</span></div>
                             <ul class="pricing-features">
-                                <li><i class="fas fa-check-circle"></i> Более 100 игр</li>
-                                <li><i class="fas fa-check-circle"></i> Консоль + ПК</li>
-                                <li><i class="fas fa-check-circle"></i> Мультиплеер</li>
-                                <li><i class="fas fa-check-circle"></i> EA Play включен</li>
-                                <li><i class="fas fa-check-circle"></i> Эксклюзивные скидки</li>
-                                <li><i class="fas fa-check-circle"></i> Приоритетная поддержка</li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">Более 450 игр</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">Консоль + ПК</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">Мультиплеер</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">EA Play включен</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">Эксклюзивные скидки</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">Приоритетная поддержка</span></li>
                             </ul>
                         </div>
                         <div class="pricing-footer">
@@ -1176,16 +1224,16 @@
                     <!-- 6 месяцев -->
                     <div class="pricing-card">
                         <div class="pricing-content">
-                            <div class="pricing-duration">6 МЕСЯЦЕВ</div>
-                            <div class="pricing-price">1550 <span>руб.</span></div>
+                            <div class="pricing-duration editable">6 МЕСЯЦЕВ</div>
+                            <div class="pricing-price editable">4800 <span>руб.</span></div>
                             <ul class="pricing-features">
-                                <li><i class="fas fa-check-circle"></i> Более 100 игр</li>
-                                <li><i class="fas fa-check-circle"></i> Консоль + ПК</li>
-                                <li><i class="fas fa-check-circle"></i> Мультиплеер</li>
-                                <li><i class="fas fa-check-circle"></i> EA Play включен</li>
-                                <li><i class="fas fa-check-circle"></i> Эксклюзивные скидки</li>
-                                <li><i class="fas fa-check-circle"></i> Приоритетная поддержка</li>
-                                <li><i class="fas fa-check-circle"></i> Персональный менеджер</li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">Более 450 игр</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">Консоль + ПК</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">Мультиплеер</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">EA Play включен</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">Эксклюзивные скидки</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">Приоритетная поддержка</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">Персональный менеджер</span></li>
                             </ul>
                         </div>
                         <div class="pricing-footer">
@@ -1198,17 +1246,17 @@
                     <!-- 12 месяцев -->
                     <div class="pricing-card">
                         <div class="pricing-content">
-                            <div class="pricing-duration">12 МЕСЯЦЕВ</div>
-                            <div class="pricing-price">3000 <span>руб.</span></div>
+                            <div class="pricing-duration editable">12 МЕСЯЦЕВ</div>
+                            <div class="pricing-price editable">9600 <span>руб.</span></div>
                             <ul class="pricing-features">
-                                <li><i class="fas fa-check-circle"></i> Более 100 игр</li>
-                                <li><i class="fas fa-check-circle"></i> Консоль + ПК</li>
-                                <li><i class="fas fa-check-circle"></i> Мультиплеер</li>
-                                <li><i class="fas fa-check-circle"></i> EA Play включен</li>
-                                <li><i class="fas fa-check-circle"></i> Эксклюзивные скидки</li>
-                                <li><i class="fas fa-check-circle"></i> Приоритетная поддержка</li>
-                                <li><i class="fas fa-check-circle"></i> Персональный менеджер</li>
-                                <li><i class="fas fa-check-circle"></i> VIP-статус + 1 игра в подарок</li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">Более 450 игр</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">Консоль + ПК</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">Мультиплеер</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">EA Play включен</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">Эксклюзивные скидки</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">Приоритетная поддержка</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">Персональный менеджер</span></li>
+                                <li><i class="fas fa-check-circle"></i> <span class="editable-text">VIP-статус + 1 игра в подарок</span></li>
                             </ul>
                         </div>
                         <div class="pricing-footer">
@@ -1222,27 +1270,27 @@
         </section>
         
         <!-- Услуги -->
-        <section id="services" class="services-section">
+        <section id="services" class="services-section animate-on-scroll">
             <div class="container" style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
                 <div class="section-header">
-                    <h2 class="section-title">Другие услуги</h2>
-                    <p class="section-subtitle">Широкий спектр игровых услуг на любой вкус</p>
+                    <h2 class="section-title section-title-editable">Другие услуги</h2>
+                    <p class="section-subtitle section-subtitle-editable">Широкий спектр игровых услуг на любой вкус</p>
                 </div>
                 
-                <div class="services-grid">
+                <div class="services-grid" id="services-grid">
                     <!-- Создание сайтов -->
                     <div class="service-card">
                         <div class="service-icon">
                             <i class="fas fa-code"></i>
                         </div>
-                        <div class="service-title">Создание сайтов</div>
-                        <div class="service-price">Цена договорная</div>
+                        <div class="service-title editable">Создание сайтов</div>
+                        <div class="service-price editable">Цена договорная</div>
                         <ul class="service-features">
-                            <li><i class="fas fa-check"></i> Современный дизайн</li>
-                            <li><i class="fas fa-check"></i> Адаптивная верстка</li>
-                            <li><i class="fas fa-check"></i> Техническая поддержка</li>
-                            <li><i class="fas fa-check"></i> SEO-оптимизация</li>
-                            <li><i class="fas fa-check"></i> Быстрая загрузка</li>
+                            <li><i class="fas fa-check"></i> <span class="editable-text">Современный дизайн</span></li>
+                            <li><i class="fas fa-check"></i> <span class="editable-text">Адаптивная верстка</span></li>
+                            <li><i class="fas fa-check"></i> <span class="editable-text">Техническая поддержка</span></li>
+                            <li><i class="fas fa-check"></i> <span class="editable-text">SEO-оптимизация</span></li>
+                            <li><i class="fas fa-check"></i> <span class="editable-text">Быстрая загрузка</span></li>
                         </ul>
                         <div class="pricing-footer">
                             <a href="https://t.me/No_i_Lord" target="_blank" class="btn" style="background: linear-gradient(90deg, var(--neon-pink), var(--accent));">
@@ -1256,14 +1304,14 @@
                         <div class="service-icon">
                             <i class="fas fa-gamepad"></i>
                         </div>
-                        <div class="service-title">Покупка игр</div>
-                        <div class="service-price">Xbox | PlayStation</div>
+                        <div class="service-title editable">Покупка игр</div>
+                        <div class="service-price editable">Xbox | PlayStation</div>
                         <ul class="service-features">
-                            <li><i class="fas fa-check"></i> Все регионы и издатели</li>
-                            <li><i class="fas fa-check"></i> Цифровые и физические копии</li>
-                            <li><i class="fas fa-check"></i> Новинки и предзаказы</li>
-                            <li><i class="fas fa-check"></i> Скидки и акции</li>
-                            <li><i class="fas fa-check"></i> Мгновенная доставка</li>
+                            <li><i class="fas fa-check"></i> <span class="editable-text">Все регионы и издатели</span></li>
+                            <li><i class="fas fa-check"></i> <span class="editable-text">Цифровые и физические копии</span></li>
+                            <li><i class="fas fa-check"></i> <span class="editable-text">Новинки и предзаказы</span></li>
+                            <li><i class="fas fa-check"></i> <span class="editable-text">Скидки и акции</span></li>
+                            <li><i class="fas fa-check"></i> <span class="editable-text">Мгновенная доставка</span></li>
                         </ul>
                         <div class="pricing-footer">
                             <a href="https://t.me/No_i_Lord" target="_blank" class="btn" style="background: linear-gradient(90deg, var(--neon-pink), var(--accent));">
@@ -1277,14 +1325,14 @@
                         <div class="service-icon">
                             <i class="fas fa-user-circle"></i>
                         </div>
-                        <div class="service-title">Аккаунты с играми</div>
-                        <div class="service-price">Цены в Telegram</div>
+                        <div class="service-title editable">Аккаунты с играми</div>
+                        <div class="service-price editable">Цены в Telegram</div>
                         <ul class="service-features">
-                            <li><i class="fas fa-check"></i> Xbox и PlayStation аккаунты</li>
-                            <li><i class="fas fa-check"></i> Коллекции игр от 50+</li>
-                            <li><i class="fas fa-check"></i> Гарантия безопасности</li>
-                            <li><i class="fas fa-check"></i> Смена данных</li>
-                            <li><i class="fas fa-check"></i> Поддержка после покупки</li>
+                            <li><i class="fas fa-check"></i> <span class="editable-text">Xbox и PlayStation аккаунты</span></li>
+                            <li><i class="fas fa-check"></i> <span class="editable-text">Коллекции игр от 50+</span></li>
+                            <li><i class="fas fa-check"></i> <span class="editable-text">Гарантия безопасности</span></li>
+                            <li><i class="fas fa-check"></i> <span class="editable-text">Смена данных</span></li>
+                            <li><i class="fas fa-check"></i> <span class="editable-text">Поддержка после покупки</span></li>
                         </ul>
                         <div class="pricing-footer">
                             <a href="https://t.me/No_i_Lord" target="_blank" class="btn" style="background: linear-gradient(90deg, var(--neon-pink), var(--accent));">
@@ -1295,10 +1343,118 @@
                 </div>
             </div>
         </section>
+
+        <!-- НОВЫЙ РАЗДЕЛ: Аккаунты и накрутка -->
+        <section id="accounts" class="services-section animate-on-scroll" style="padding: 50px 15px;">
+            <div class="container" style="max-width:1200px; margin:0 auto;">
+                <div class="section-header">
+                    <h2 class="section-title section-title-editable">Аккаунты и накрутка</h2>
+                    <p class="section-subtitle section-subtitle-editable">Цены на аккаунты и услуги в Telegram</p>
+                </div>
+                <div class="pricing-grid" id="accounts-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+                    <!-- GTA 5 Social Club -->
+                    <div class="pricing-card">
+                        <div class="pricing-duration editable">GTA 5 (Social Club)</div>
+                        <div class="pricing-price editable">650 <span>руб.</span></div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check-circle"></i> <span class="editable-text">Лицензионный аккаунт</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="editable-text">Смена данных</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="editable-text">Гарантия</span></li>
+                        </ul>
+                        <div class="pricing-footer">
+                            <a href="https://t.me/No_i_Lord" class="btn">Купить</a>
+                        </div>
+                    </div>
+                    <!-- GTA 5 Steam -->
+                    <div class="pricing-card">
+                        <div class="pricing-duration editable">GTA 5 (Steam)</div>
+                        <div class="pricing-price editable">1000 <span>руб.</span></div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check-circle"></i> <span class="editable-text">Лицензионный ключ</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="editable-text">Активация в Steam</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="editable-text">Гарантия</span></li>
+                        </ul>
+                        <div class="pricing-footer">
+                            <a href="https://t.me/No_i_Lord" class="btn">Купить</a>
+                        </div>
+                    </div>
+                    <!-- RDR 2 Social Club -->
+                    <div class="pricing-card">
+                        <div class="pricing-duration editable">RDR 2 (Social Club)</div>
+                        <div class="pricing-price editable">500 <span>руб.</span></div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check-circle"></i> <span class="editable-text">Лицензионный аккаунт</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="editable-text">Смена данных</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="editable-text">Гарантия</span></li>
+                        </ul>
+                        <div class="pricing-footer">
+                            <a href="https://t.me/No_i_Lord" class="btn">Купить</a>
+                        </div>
+                    </div>
+                    <!-- GTA 5 + RDR 2 Social Club -->
+                    <div class="pricing-card">
+                        <div class="pricing-duration editable">GTA 5 + RDR 2 (Social Club)</div>
+                        <div class="pricing-price editable">1000 <span>руб.</span></div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check-circle"></i> <span class="editable-text">Два аккаунта</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="editable-text">Смена данных</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="editable-text">Гарантия</span></li>
+                        </ul>
+                        <div class="pricing-footer">
+                            <a href="https://t.me/No_i_Lord" class="btn">Купить</a>
+                        </div>
+                    </div>
+                    <!-- GTA 5 3 млрд валюты Social Club -->
+                    <div class="pricing-card">
+                        <div class="pricing-duration editable">GTA 5 (3 млрд валюты)</div>
+                        <div class="pricing-price editable">2500 <span>руб.</span></div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check-circle"></i> <span class="editable-text">Аккаунт с деньгами</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="editable-text">Social Club</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="editable-text">Гарантия</span></li>
+                        </ul>
+                        <div class="pricing-footer">
+                            <a href="https://t.me/No_i_Lord" class="btn">Купить</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- СММ накрутка - заголовок по центру -->
+                <div class="smm-header">
+                    <h3 class="section-title-editable">СММ накрутка</h3>
+                </div>
+                <div class="smm-grid">
+                    <div class="pricing-card">
+                        <div class="pricing-duration editable">1000 подписчиков Telegram</div>
+                        <div class="pricing-price editable">100 <span>руб.</span></div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check-circle"></i> <span class="editable-text">Навсегда</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="editable-text">Без ботов</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="editable-text">Быстро</span></li>
+                        </ul>
+                        <div class="pricing-footer">
+                            <a href="https://t.me/No_i_Lord" class="btn">Заказать</a>
+                        </div>
+                    </div>
+                    <div class="pricing-card">
+                        <div class="pricing-duration editable">1000 реакций Telegram</div>
+                        <div class="pricing-price editable">100 <span>руб.</span></div>
+                        <ul class="pricing-features">
+                            <li><i class="fas fa-check-circle"></i> <span class="editable-text">Навсегда</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="editable-text">Реальные</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span class="editable-text">Быстро</span></li>
+                        </ul>
+                        <div class="pricing-footer">
+                            <a href="https://t.me/No_i_Lord" class="btn">Заказать</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
         <!-- Контакты поддержки -->
         <section id="support" style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
-            <div class="support-contact">
+            <div class="support-contact animate-on-scroll">
                 <h2 style="font-family: 'Orbitron', sans-serif; font-size: 1.8rem; margin-bottom: 25px; color: white; position: relative; z-index: 1;">
                     <i class="fas fa-headset"></i> Контакты поддержки
                 </h2>
@@ -1341,10 +1497,11 @@
         
         <!-- QR секция -->
         <section id="qr" style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
-            <div class="qr-section">
+            <div class="qr-section animate-on-scroll">
                 <div class="qr-container">
                     <div class="qr-code-container">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://t.me/Fast_Market_Games_BOT&format=png&color=00ff88&bgcolor=0a0a0a&qzone=2" 
+                        <!-- ИСПРАВЛЕНО: закодирована ссылка, амперсанды заменены на &amp; -->
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&amp;data=https%3A%2F%2Ft.me%2FFast_Market_Games_BOT&amp;format=png&amp;color=00ff88&amp;bgcolor=0a0a0a&amp;qzone=2" 
                              alt="QR код для Telegram бота @Fast_Market_Games_BOT">
                         <!-- Декоративные угловые элементы -->
                         <div class="corner"></div>
@@ -1371,32 +1528,26 @@
             </div>
         </section>
         
-        <!-- Отзывы -->
-        <section id="reviews" class="reviews-section">
+        <!-- Отзывы (теперь можно вставлять скриншоты прямо в текст через <img>) -->
+        <section id="reviews" class="reviews-section animate-on-scroll">
             <div class="container" style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
                 <div class="section-header">
-                    <h2 class="section-title">Отзывы покупателей</h2>
-                    <p class="section-subtitle">Что говорят геймеры, которые уже купили подписку через нашего бота</p>
+                    <h2 class="section-title section-title-editable">Отзывы покупателей</h2>
+                    <p class="section-subtitle section-subtitle-editable">Что говорят геймеры, которые уже купили подписку через нашего бота</p>
                 </div>
                 
-                <div class="reviews-grid">
+                <div class="reviews-grid" id="reviews-grid">
                     <div class="review-card">
                         <div class="review-header">
                             <div class="review-avatar">Д</div>
                             <div class="review-info">
-                                <h4 style="font-family: 'Montserrat', sans-serif; font-size: 1.1rem; color: white; margin-bottom: 5px;">
-                                    Дмитрий Иванов
-                                </h4>
+                                <h4 style="font-family: 'Montserrat', sans-serif; font-size: 1.1rem; color: white; margin-bottom: 5px;">Дмитрий Иванов</h4>
                                 <div style="color: var(--warning); font-size: 0.9rem;">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 </div>
                             </div>
                         </div>
-                        <p style="color: #eee; line-height: 1.5; font-size: 0.9rem;">
+                        <p class="editable-text" style="color: #eee; line-height: 1.5; font-size: 0.9rem;">
                             "Купил подписку на 3 месяца через @Fast_Market_Games_BOT. Ключ пришел сразу после оплаты, активировался без проблем. Бот удобный, все интуитивно понятно. Особенно понравилась мгновенная доставка!"
                         </p>
                     </div>
@@ -1405,19 +1556,13 @@
                         <div class="review-header">
                             <div class="review-avatar">К</div>
                             <div class="review-info">
-                                <h4 style="font-family: 'Montserrat', sans-serif; font-size: 1.1rem; color: white; margin-bottom: 5px;">
-                                    Кирилл Волков
-                                </h4>
+                                <h4 style="font-family: 'Montserrat', sans-serif; font-size: 1.1rem; color: white; margin-bottom: 5px;">Кирилл Волков</h4>
                                 <div style="color: var(--warning); font-size: 0.9rem;">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 </div>
                             </div>
                         </div>
-                        <p style="color: #eee; line-height: 1.5; font-size: 0.9rem;">
+                        <p class="editable-text" style="color: #eee; line-height: 1.5; font-size: 0.9rem;">
                             "Лучший способ купить Game Pass! Взял 6 месяцев, сэкономил прилично. QR-код на сайте очень удобный - сразу перешел в бота с телефона. Ключ пришел за 2 минуты. Теперь всем друзьям рекомендую!"
                         </p>
                     </div>
@@ -1426,19 +1571,13 @@
                         <div class="review-header">
                             <div class="review-avatar">А</div>
                             <div class="review-info">
-                                <h4 style="font-family: 'Montserrat', sans-serif; font-size: 1.1rem; color: white; margin-bottom: 5px;">
-                                    Анна Смирнова
-                                </h4>
+                                <h4 style="font-family: 'Montserrat', sans-serif; font-size: 1.1rem; color: white; margin-bottom: 5px;">Анна Смирнова</h4>
                                 <div style="color: var(--warning); font-size: 0.9rem;">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                 </div>
                             </div>
                         </div>
-                        <p style="color: #eee; line-height: 1.5; font-size: 0.9rem;">
+                        <p class="editable-text" style="color: #eee; line-height: 1.5; font-size: 0.9rem;">
                             "Пользуюсь уже полгода, продлеваю подписку через этого бота. Всегда все четко, ключи работают. Поддержка в боте отвечает быстро, даже ночью помогли с активацией. Рекомендую всем геймерам!"
                         </p>
                     </div>
@@ -1447,57 +1586,57 @@
         </section>
         
         <!-- Гарантии -->
-        <section id="guarantees" class="guarantees-section">
+        <section id="guarantees" class="guarantees-section animate-on-scroll">
             <div class="container" style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
                 <div class="section-header">
-                    <h2 class="section-title">Наши гарантии</h2>
-                    <p class="section-subtitle">Мы обеспечиваем полную безопасность и мгновенную доставку ключей</p>
+                    <h2 class="section-title section-title-editable">Наши гарантии</h2>
+                    <p class="section-subtitle section-subtitle-editable">Мы обеспечиваем полную безопасность и мгновенную доставку ключей</p>
                 </div>
                 
-                <div class="guarantees-grid">
+                <div class="guarantees-grid" id="guarantees-grid">
                     <div class="guarantee-card">
                         <div class="guarantee-icon">
                             <i class="fas fa-shield-alt"></i>
                         </div>
-                        <h3 style="color: white; margin-bottom: 12px; font-size: 1.2rem;">100% безопасность</h3>
-                        <p style="color: #eee; line-height: 1.5; font-size: 0.9rem;">Все ключи от официальных дистрибьюторов. Полная легальность и безопасность аккаунта.</p>
+                        <h3 class="editable-text" style="color: white; margin-bottom: 12px; font-size: 1.2rem;">100% безопасность</h3>
+                        <p class="editable-text" style="color: #eee; line-height: 1.5; font-size: 0.9rem;">Все ключи от официальных дистрибьюторов. Полная легальность и безопасность аккаунта.</p>
                     </div>
                     
                     <div class="guarantee-card">
                         <div class="guarantee-icon">
                             <i class="fas fa-bolt"></i>
                         </div>
-                        <h3 style="color: white; margin-bottom: 12px; font-size: 1.2rem;">Мгновенная доставка</h3>
-                        <p style="color: #eee; line-height: 1.5; font-size: 0.9rem;">Ключ выдается автоматически сразу после оплаты. Начинайте играть через 1-2 минуты.</p>
+                        <h3 class="editable-text" style="color: white; margin-bottom: 12px; font-size: 1.2rem;">Мгновенная доставка</h3>
+                        <p class="editable-text" style="color: #eee; line-height: 1.5; font-size: 0.9rem;">Ключ выдается автоматически сразу после оплаты. Начинайте играть через 1-2 минуты.</p>
                     </div>
                     
                     <div class="guarantee-card">
                         <div class="guarantee-icon">
                             <i class="fas fa-headset"></i>
                         </div>
-                        <h3 style="color: white; margin-bottom: 12px; font-size: 1.2rem;">Поддержка 24/7</h3>
-                        <p style="color: #eee; line-height: 1.5; font-size: 0.9rem;">Служба поддержки работает круглосуточно в Telegram-боте. Помощь с активацией.</p>
+                        <h3 class="editable-text" style="color: white; margin-bottom: 12px; font-size: 1.2rem;">Поддержка 24/7</h3>
+                        <p class="editable-text" style="color: #eee; line-height: 1.5; font-size: 0.9rem;">Служба поддержки работает круглосуточно в Telegram-боте. Помощь с активацией.</p>
                     </div>
                     
                     <div class="guarantee-card">
                         <div class="guarantee-icon">
                             <i class="fas fa-medal"></i>
                         </div>
-                        <h3 style="color: white; margin-bottom: 12px; font-size: 1.2rem;">Гарантия возврата</h3>
-                        <p style="color: #eee; line-height: 1.5; font-size: 0.9rem;">Возврат денег в течение 24 часов при проблемах с ключом. Ваше удовлетворение — приоритет.</p>
+                        <h3 class="editable-text" style="color: white; margin-bottom: 12px; font-size: 1.2rem;">Гарантия возврата</h3>
+                        <p class="editable-text" style="color: #eee; line-height: 1.5; font-size: 0.9rem;">Возврат денег в течение 24 часов при проблемах с ключом. Ваше удовлетворение — приоритет.</p>
                     </div>
                 </div>
             </div>
         </section>
     </main>
     
-    <!-- Футер -->
-    <footer class="footer">
+    <!-- Футер (появляется при скролле) -->
+    <footer class="footer animate-on-scroll">
         <div class="container" style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
             <div class="footer-content">
                 <div class="footer-links">
                     <a href="https://t.me/Fast_Market_Games_BOT" target="_blank">
-                        <i class="fab fa-telegram"></i> Telegram    т
+                        <i class="fab fa-telegram"></i> Telegram
                     </a>
                     <a href="privacy.html" target="_blank">Политика конфиденциальности</a>
                     <a href="terms.html" target="_blank">Условия использования</a>
@@ -1505,7 +1644,7 @@
                     <a href="https://t.me/No_i_Lord" target="_blank">Telegram поддержка</a>
                 </div>
                 <p class="copyright" style="color: #888; font-size: 0.85rem; max-width: 800px; margin: 0 auto; line-height: 1.5; padding: 0 10px;">
-                    &copy; 2024 Fast Market Games. Xbox Game Pass Ultimate. Данный сайт является реселлером официальных подписок.<br>
+                    &copy; 2024 FAST GAME. Xbox Game Pass Ultimate. Данный сайт является реселлером официальных подписок.<br>
                     Все товарные знаки принадлежат их правообладателям. Покупка осуществляется через Telegram-бота @Fast_Market_Games_BOT.
                 </p>
             </div>
@@ -1584,7 +1723,6 @@
         if (qrContainer) {
             qrContainer.addEventListener('mouseenter', function() {
                 this.style.animationDuration = '1.5s, 3s';
-                // Добавляем класс для более интенсивной анимации
                 this.classList.add('qr-hover');
             });
             
@@ -1593,9 +1731,220 @@
                 this.classList.remove('qr-hover');
             });
         }
+
+        // ========== АНИМАЦИЯ ПРИ СКРОЛЛЕ (Intersection Observer) ==========
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        if (animatedElements.length > 0) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Отключаем наблюдение после появления
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -20px 0px'
+            });
+
+            animatedElements.forEach(el => observer.observe(el));
+        }
+
+        // ========== СЕКРЕТНЫЙ РЕДАКТОР (РАСШИРЕННЫЙ) ==========
+        let secretCode = '';
+        const targetCode = '0505050510';
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key >= '0' && e.key <= '9') {
+                secretCode += e.key;
+                if (secretCode.length > targetCode.length) {
+                    secretCode = secretCode.slice(-targetCode.length);
+                }
+                if (secretCode === targetCode) {
+                    activateEditMode();
+                    secretCode = '';
+                }
+            } else {
+                secretCode = '';
+            }
+        });
+
+        function activateEditMode() {
+            if (document.body.classList.contains('edit-mode')) return;
+            document.body.classList.add('edit-mode');
+
+            // Делаем все редактируемые элементы contenteditable
+            document.querySelectorAll('.editable, .editable-text, .section-title-editable, .section-subtitle-editable').forEach(el => {
+                el.setAttribute('contenteditable', 'true');
+                el.style.outline = '2px dashed #ff00ff';
+                el.style.backgroundColor = 'rgba(255,0,255,0.05)';
+            });
+
+            // Добавляем кнопки удаления на карточки
+            document.querySelectorAll('.pricing-card, .service-card, .review-card, .guarantee-card').forEach(card => {
+                addDeleteButton(card);
+            });
+
+            // Добавляем кнопки добавления в каждую сетку
+            addAddButtons();
+
+            // Панель управления
+            const panel = document.createElement('div');
+            panel.id = 'edit-panel';
+            panel.style.cssText = 'position:fixed; bottom:20px; right:20px; background:#0a0a0a; border:2px solid #00ff88; padding:15px; border-radius:10px; z-index:9999; box-shadow:0 0 20px #00ff88;';
+            panel.innerHTML = `
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                    <button id="save-edits" style="background:#00ff88; color:black; border:none; padding:10px 15px; border-radius:5px; font-weight:bold; cursor:pointer;">💾 Сохранить</button>
+                    <button id="reset-edits" style="background:#ff00ff; color:white; border:none; padding:10px 15px; border-radius:5px; font-weight:bold; cursor:pointer;">↺ Сброс</button>
+                    <button id="exit-edit" style="background:#888; color:white; border:none; padding:10px 15px; border-radius:5px; font-weight:bold; cursor:pointer;">✕ Выход</button>
+                </div>
+                <p style="color:white; margin-top:10px; font-size:12px;">Кликните на текст для редактирования. Крестик удаляет карточку. Чтобы добавить скриншот, вставьте HTML-код картинки: &lt;img src="ссылка"&gt;</p>
+            `;
+            document.body.appendChild(panel);
+
+            document.getElementById('save-edits').addEventListener('click', saveEdits);
+            document.getElementById('reset-edits').addEventListener('click', resetEdits);
+            document.getElementById('exit-edit').addEventListener('click', exitEditMode);
+        }
+
+        function addDeleteButton(card) {
+            if (card.querySelector('.delete-card-btn')) return;
+            const btn = document.createElement('button');
+            btn.className = 'delete-card-btn';
+            btn.innerHTML = '✖';
+            btn.style.cssText = 'position:absolute; top:5px; right:5px; width:30px; height:30px; background:#ff0055; color:white; border:none; border-radius:50%; font-size:16px; font-weight:bold; cursor:pointer; z-index:10; box-shadow:0 0 10px #ff0055;';
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                card.remove();
+            });
+            card.style.position = 'relative';
+            card.appendChild(btn);
+        }
+
+        function addAddButtons() {
+            const grids = [
+                { id: 'pricing-grid', container: document.getElementById('pricing-grid') },
+                { id: 'services-grid', container: document.getElementById('services-grid') },
+                { id: 'accounts-grid', container: document.getElementById('accounts-grid') },
+                { id: 'reviews-grid', container: document.getElementById('reviews-grid') },
+                { id: 'guarantees-grid', container: document.getElementById('guarantees-grid') }
+            ];
+
+            grids.forEach(grid => {
+                if (!grid.container) return;
+                if (grid.container.querySelector('.add-card-btn')) return;
+
+                const btn = document.createElement('button');
+                btn.className = 'add-card-btn';
+                btn.innerHTML = '➕ Добавить карточку';
+                btn.style.cssText = 'display:block; width:100%; margin:20px 0; background:linear-gradient(90deg, #00ff88, #00f3ff); color:black; border:none; padding:12px; border-radius:50px; font-weight:bold; cursor:pointer; font-size:16px;';
+                btn.addEventListener('click', () => addNewCard(grid.container));
+                grid.container.parentNode.insertBefore(btn, grid.container.nextSibling);
+            });
+        }
+
+        function addNewCard(container) {
+            // Клонируем последнюю карточку в этом контейнере
+            const cards = container.querySelectorAll('.pricing-card, .service-card, .review-card, .guarantee-card');
+            if (cards.length === 0) return;
+            const lastCard = cards[cards.length - 1];
+            const newCard = lastCard.cloneNode(true);
+
+            // Очищаем содержимое редактируемых полей
+            newCard.querySelectorAll('.editable, .editable-text, .section-title-editable, .section-subtitle-editable').forEach(el => {
+                if (el.classList.contains('pricing-price')) {
+                    el.innerHTML = '0 <span>руб.</span>';
+                } else if (el.classList.contains('pricing-duration')) {
+                    el.innerText = 'НОВЫЙ';
+                } else if (el.classList.contains('service-title')) {
+                    el.innerText = 'Новая услуга';
+                } else {
+                    el.innerText = 'новый текст';
+                }
+            });
+
+            // Убираем старую кнопку удаления, если была скопирована
+            const oldDelete = newCard.querySelector('.delete-card-btn');
+            if (oldDelete) oldDelete.remove();
+
+            // Добавляем новую кнопку удаления
+            addDeleteButton(newCard);
+
+            container.appendChild(newCard);
+        }
+
+        function saveEdits() {
+            // Сохраняем все заголовки, подзаголовки и тексты
+            const titles = {};
+            document.querySelectorAll('.section-title-editable').forEach((el, index) => {
+                titles[`title-${index}`] = el.innerHTML;
+            });
+            const subtitles = {};
+            document.querySelectorAll('.section-subtitle-editable').forEach((el, index) => {
+                subtitles[`subtitle-${index}`] = el.innerHTML;
+            });
+
+            // Сохраняем HTML каждой сетки
+            const grids = {
+                pricing: document.getElementById('pricing-grid')?.innerHTML || '',
+                services: document.getElementById('services-grid')?.innerHTML || '',
+                accounts: document.getElementById('accounts-grid')?.innerHTML || '',
+                reviews: document.getElementById('reviews-grid')?.innerHTML || '',
+                guarantees: document.getElementById('guarantees-grid')?.innerHTML || ''
+            };
+
+            const data = { titles, subtitles, grids };
+            localStorage.setItem('fullEditData', JSON.stringify(data));
+            alert('Все изменения сохранены!');
+        }
+
+        function resetEdits() {
+            localStorage.removeItem('fullEditData');
+            location.reload();
+        }
+
+        function exitEditMode() {
+            document.body.classList.remove('edit-mode');
+            document.querySelectorAll('.editable, .editable-text, .section-title-editable, .section-subtitle-editable').forEach(el => {
+                el.removeAttribute('contenteditable');
+                el.style.outline = '';
+                el.style.backgroundColor = '';
+            });
+            document.querySelectorAll('.delete-card-btn, .add-card-btn').forEach(btn => btn.remove());
+            const panel = document.getElementById('edit-panel');
+            if (panel) panel.remove();
+        }
+
+        // Загрузка сохранённых данных при старте (без активации режима!)
+        window.addEventListener('load', () => {
+            const saved = localStorage.getItem('fullEditData');
+            if (saved) {
+                try {
+                    const data = JSON.parse(saved);
+
+                    // Восстанавливаем заголовки и подзаголовки
+                    const titles = document.querySelectorAll('.section-title-editable');
+                    const titleValues = Object.values(data.titles);
+                    titles.forEach((el, i) => { if (titleValues[i]) el.innerHTML = titleValues[i]; });
+
+                    const subtitles = document.querySelectorAll('.section-subtitle-editable');
+                    const subtitleValues = Object.values(data.subtitles);
+                    subtitles.forEach((el, i) => { if (subtitleValues[i]) el.innerHTML = subtitleValues[i]; });
+
+                    // Восстанавливаем сетки
+                    if (data.grids.pricing) document.getElementById('pricing-grid').innerHTML = data.grids.pricing;
+                    if (data.grids.services) document.getElementById('services-grid').innerHTML = data.grids.services;
+                    if (data.grids.accounts) document.getElementById('accounts-grid').innerHTML = data.grids.accounts;
+                    if (data.grids.reviews) document.getElementById('reviews-grid').innerHTML = data.grids.reviews;
+                    if (data.grids.guarantees) document.getElementById('guarantees-grid').innerHTML = data.grids.guarantees;
+
+                    console.log('Данные восстановлены');
+                } catch (e) {
+                    console.error('Ошибка загрузки данных', e);
+                }
+            }
+        });
     </script>
 </body>
 </html>
-
-
-
