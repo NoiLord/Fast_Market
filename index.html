@@ -22,6 +22,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>FAST GAME | Xbox Game Pass Ultimate | Официальные подписки</title>
     <meta name="description" content="Купить Xbox Game Pass и игры для PS/Xbox | FAST GAME. Магазин с мгновенной доставкой цифровых товаров: подписки Game Pass Ultimate, ключи игр для PlayStation, Xbox, а также эксклюзивные аккаунты и готовые сайты. Работаем быстро и надежно.">
+    <meta name="keywords" content="xbox game pass, xbox game pass ultimate, купить подписку xbox, ea play, xbox live gold, pбуkey, ключи игр, PlayStation">
+    <meta name="theme-color" content="#00ff88">
+    <link rel="canonical" href="https://fast-game.ru/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="FAST GAME">
+    <meta property="og:title" content="FAST GAME | Xbox Game Pass Ultimate | Официальные подписки">
+    <meta property="og:description" content="Xbox Game Pass, ключи игр, аккаунты и СММ накрутка. Мгновенная автовыдача через Telegram-бота.">
+    <meta property="og:image" content="https://fast-game.ru/Logo.png">
+    <meta property="og:url" content="https://fast-game.ru/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="FAST GAME | Xbox Game Pass Ultimate">
+    <meta name="twitter:description" content="Подписки Game Pass Ultimate, игры, аккаунты и СММ. Мгновенная доставка через Telegram-бот.">
+    <meta name="twitter:image" content="https://fast-game.ru/Logo.png">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Store",
+      "name": "FAST GAME",
+      "url": "https://fast-game.ru/",
+      "image": "https://fast-game.ru/Logo.png",
+      "logo": "https://fast-game.ru/Logo.png",
+      "description": "Магазин цифровых товаров: подписки Xbox Game Pass Ultimate, игры для PlayStation/Xbox, аккаунты и СММ накрутка.",
+      "telephone": "+7-918-970-55-06",
+      "priceRange": "100-9600 ₽",
+      "sameAs": [
+        "https://t.me/Fast_Market_Games_BOT",
+        "https://t.me/No_i_Lord"
+      ],
+      "makesOffer": [
+        {"@type": "Offer", "name": "Game Pass Ultimate 1 месяц", "price": "900", "priceCurrency": "RUB", "url": "https://t.me/Fast_Market_Games_BOT?start=gpu_1m"},
+        {"@type": "Offer", "name": "Game Pass Ultimate 3 месяца", "price": "2500", "priceCurrency": "RUB", "url": "https://t.me/Fast_Market_Games_BOT?start=gpu_3m"},
+        {"@type": "Offer", "name": "Game Pass Ultimate 6 месяцев", "price": "4800", "priceCurrency": "RUB", "url": "https://t.me/Fast_Market_Games_BOT?start=gpu_6m"},
+        {"@type": "Offer", "name": "Game Pass Ultimate 12 месяцев", "price": "9600", "priceCurrency": "RUB", "url": "https://t.me/Fast_Market_Games_BOT?start=gpu_12m"}
+      ]
+    }
+    </script>
     <link rel="icon" href="favicon-16x16.png" sizes="16x16" type="image/png">
     <link rel="icon" href="favicon-32x32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="favicon-96x96.png" sizes="96x96" type="image/png">
@@ -1102,6 +1138,88 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* FAQ */
+        .faq-item {
+            background: rgba(20, 20, 20, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(0, 255, 136, 0.15);
+            overflow: hidden;
+            transition: var(--transition);
+        }
+        .faq-item summary {
+            cursor: pointer;
+            padding: 18px 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            color: #fff;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            user-select: none;
+        }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-item summary::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--primary);
+            transition: transform 0.3s ease;
+        }
+        .faq-item[open] summary::after { transform: rotate(180deg); }
+        .faq-item[open] { border-color: rgba(0, 255, 136, 0.45); box-shadow: 0 0 20px rgba(0, 255, 136, 0.15); }
+        .faq-item summary:hover { background: rgba(0, 255, 136, 0.04); }
+        .faq-item p {
+            padding: 0 20px 18px;
+            color: #ccc;
+            line-height: 1.6;
+            font-size: 0.92rem;
+        }
+
+        /* Плавающая кнопка Telegram */
+        .floating-tg {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(90deg, var(--telegram), #00ccff);
+            color: #fff;
+            padding: 12px 16px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            box-shadow: 0 8px 25px rgba(0, 136, 255, 0.5);
+            animation: tgPulse 2.5s infinite ease-in-out;
+            transition: transform 0.3s ease;
+        }
+        .floating-tg .tg-ico {
+            width: 34px;
+            height: 34px;
+            background: #fff;
+            color: var(--telegram);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.15rem;
+            flex-shrink: 0;
+        }
+        .floating-tg:hover { transform: scale(1.06); }
+        @keyframes tgPulse {
+            0%, 100% { box-shadow: 0 8px 25px rgba(0, 136, 255, 0.4); }
+            50% { box-shadow: 0 8px 35px rgba(0, 200, 255, 0.75); }
+        }
+        @media (max-width: 480px) {
+            .floating-tg { right: 15px; bottom: 15px; padding: 10px 13px; }
+            .floating-tg .tg-label { max-width: 130px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        }
     </style>
     <link rel="search" type="application/opensearchdescription+xml" title="Поиск по сайту" href="opensearch.xml">
 </head>
@@ -1121,6 +1239,7 @@
             <a href="#accounts">Аккаунты</a>
             <a href="#reviews">Отзывы</a>
             <a href="#guarantees">Гарантии</a>
+            <a href="#faq">Вопросы</a>
             <a href="#support">Поддержка</a>
             <a href="privacy.html" target="_blank">Политика</a>
             <a href="terms.html" target="_blank">Условия</a>
@@ -1145,6 +1264,7 @@
                 <a href="#accounts">Аккаунты</a>
                 <a href="#reviews">Отзывы</a>
                 <a href="#guarantees">Гарантии</a>
+                <a href="#faq">Вопросы</a>
                 <a href="#support">Поддержка</a>
                 <a href="privacy.html" target="_blank">Политика</a>
                 <a href="terms.html" target="_blank">Условия</a>
@@ -1193,7 +1313,7 @@
                             </ul>
                         </div>
                         <div class="pricing-footer">
-                            <a href="https://t.me/Fast_Market_Games_BOT" target="_blank" class="btn">
+                            <a href="https://t.me/Fast_Market_Games_BOT?start=gpu_1m"" target="_blank" class="btn">
                                 <i class="fab fa-telegram"></i> Купить
                             </a>
                         </div>
@@ -1215,7 +1335,7 @@
                             </ul>
                         </div>
                         <div class="pricing-footer">
-                            <a href="https://t.me/Fast_Market_Games_BOT" target="_blank" class="btn">
+                            <a href="https://t.me/Fast_Market_Games_BOT?start=gpu_3m"" target="_blank" class="btn">
                                 <i class="fab fa-telegram"></i> Купить
                             </a>
                         </div>
@@ -1237,7 +1357,7 @@
                             </ul>
                         </div>
                         <div class="pricing-footer">
-                            <a href="https://t.me/Fast_Market_Games_BOT" target="_blank" class="btn">
+                            <a href="https://t.me/Fast_Market_Games_BOT?start=gpu_6m"" target="_blank" class="btn">
                                 <i class="fab fa-telegram"></i> Купить
                             </a>
                         </div>
@@ -1260,7 +1380,7 @@
                             </ul>
                         </div>
                         <div class="pricing-footer">
-                            <a href="https://t.me/Fast_Market_Games_BOT" target="_blank" class="btn">
+                            <a href="https://t.me/Fast_Market_Games_BOT?start=gpu_12m"" target="_blank" class="btn">
                                 <i class="fab fa-telegram"></i> Купить
                             </a>
                         </div>
@@ -1362,7 +1482,7 @@
                             <li><i class="fas fa-check-circle"></i> <span class="editable-text">Гарантия</span></li>
                         </ul>
                         <div class="pricing-footer">
-                            <a href="https://t.me/No_i_Lord" class="btn">Купить</a>
+                            <a href="https://t.me/Fast_Market_Games_BOT?start=gta5_sc"" class="btn">Купить</a>
                         </div>
                     </div>
                     <!-- GTA 5 Steam -->
@@ -1375,7 +1495,7 @@
                             <li><i class="fas fa-check-circle"></i> <span class="editable-text">Гарантия</span></li>
                         </ul>
                         <div class="pricing-footer">
-                            <a href="https://t.me/No_i_Lord" class="btn">Купить</a>
+                            <a href="https://t.me/Fast_Market_Games_BOT?start=gta5_steam"" class="btn">Купить</a>
                         </div>
                     </div>
                     <!-- RDR 2 Social Club -->
@@ -1388,7 +1508,7 @@
                             <li><i class="fas fa-check-circle"></i> <span class="editable-text">Гарантия</span></li>
                         </ul>
                         <div class="pricing-footer">
-                            <a href="https://t.me/No_i_Lord" class="btn">Купить</a>
+                            <a href="https://t.me/Fast_Market_Games_BOT?start=rdr2_sc"" class="btn">Купить</a>
                         </div>
                     </div>
                     <!-- GTA 5 + RDR 2 Social Club -->
@@ -1401,7 +1521,7 @@
                             <li><i class="fas fa-check-circle"></i> <span class="editable-text">Гарантия</span></li>
                         </ul>
                         <div class="pricing-footer">
-                            <a href="https://t.me/No_i_Lord" class="btn">Купить</a>
+                            <a href="https://t.me/Fast_Market_Games_BOT?start=gta5_rdr2"" class="btn">Купить</a>
                         </div>
                     </div>
                     <!-- GTA 5 3 млрд валюты Social Club -->
@@ -1414,7 +1534,7 @@
                             <li><i class="fas fa-check-circle"></i> <span class="editable-text">Гарантия</span></li>
                         </ul>
                         <div class="pricing-footer">
-                            <a href="https://t.me/No_i_Lord" class="btn">Купить</a>
+                            <a href="https://t.me/Fast_Market_Games_BOT?start=gta5_money"" class="btn">Купить</a>
                         </div>
                     </div>
                 </div>
@@ -1433,7 +1553,7 @@
                             <li><i class="fas fa-check-circle"></i> <span class="editable-text">Быстро</span></li>
                         </ul>
                         <div class="pricing-footer">
-                            <a href="https://t.me/No_i_Lord" class="btn">Заказать</a>
+                            <a href="https://t.me/Fast_Market_Games_BOT?start=smm_subs"" class="btn">Заказать</a>
                         </div>
                     </div>
                     <div class="pricing-card">
@@ -1445,7 +1565,7 @@
                             <li><i class="fas fa-check-circle"></i> <span class="editable-text">Быстро</span></li>
                         </ul>
                         <div class="pricing-footer">
-                            <a href="https://t.me/No_i_Lord" class="btn">Заказать</a>
+                            <a href="https://t.me/Fast_Market_Games_BOT?start=smm_reactions"" class="btn">Заказать</a>
                         </div>
                     </div>
                 </div>
@@ -1628,6 +1748,38 @@
                 </div>
             </div>
         </section>
+
+        <!-- Частые вопросы -->
+        <section id="faq" class="reviews-section animate-on-scroll">
+            <div class="container" style="max-width: 800px; margin: 0 auto; position: relative; z-index: 1;">
+                <div class="section-header">
+                    <h2 class="section-title section-title-editable">Частые вопросы</h2>
+                    <p class="section-subtitle section-subtitle-editable">Коротко о главном</p>
+                </div>
+                <div class="faq-list" style="display: flex; flex-direction: column; gap: 12px;">
+                    <details class="faq-item">
+                        <summary>⚡ Как быстро я получу ключ?</summary>
+                        <p>Ключ выдаётся автоматически сразу после подтверждения оплаты менеджером — обычно в течение 1–5 минут. Заказ оформляется за пару кликов в боте.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>🎮 Подписка активируется на мой аккаунт?</summary>
+                        <p>Да! Game Pass Ultimate подключается на ваш личный аккаунт Xbox. Достаточно оставить контакт при заказе — подписку активируем за вас.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>🔒 Это официально и легально?</summary>
+                        <p>Мы работаем с официальными дистрибьюторами и выдаём лицензионные ключи. Полная гарантия безопасности вашего аккаунта.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>🗳 Не сработал ключ — что делать?</summary>
+                        <p>Напишите в поддержку в Telegram. Приведём замену ключа или вернём деньги в течение 24 часов.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary>💳 Какие способы оплаты?</summary>
+                        <p>После оформления заказа бот покажет реквизиты для перевода. Подтверждение оплаты — скриншотом. Работаем 24/7.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
     </main>
     
     <!-- Футер (появляется при скролле) -->
@@ -1644,13 +1796,19 @@
                     <a href="https://t.me/No_i_Lord" target="_blank">Telegram поддержка</a>
                 </div>
                 <p class="copyright" style="color: #888; font-size: 0.85rem; max-width: 800px; margin: 0 auto; line-height: 1.5; padding: 0 10px;">
-                    &copy; 2024 FAST GAME. Xbox Game Pass Ultimate. Данный сайт является реселлером официальных подписок.<br>
+                    &copy; 2026 FAST GAME. Xbox Game Pass Ultimate. Данный сайт является реселлером официальных подписок.<br>
                     Все товарные знаки принадлежат их правообладателям. Покупка осуществляется через Telegram-бота @Fast_Market_Games_BOT.
                 </p>
             </div>
         </div>
     </footer>
     
+    <!-- Плавающая кнопка бота -->
+    <a href="https://t.me/Fast_Market_Games_BOT" target="_blank" class="floating-tg" aria-label="Открыть Telegram-бота FAST GAME">
+        <span class="tg-ico"><i class="fab fa-telegram-plane"></i></span>
+        <span class="tg-label">Бот работает 24/7</span>
+    </a>
+
     <script>
         // Мобильное меню
         const mobileMenuToggle = document.getElementById('mobileMenuToggle');
