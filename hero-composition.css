@@ -1,0 +1,20 @@
+/* The approved central hacker composition; existing glass buttons are retained. */
+.hero{min-height:900px;background:radial-gradient(ellipse at 50% 42%,#0b2a4f38,transparent 65%)}
+.hero-word{top:45px;font-size:clamp(95px,13vw,190px);letter-spacing:-8px;opacity:.72;line-height:1;z-index:1;pointer-events:none;mask-image:linear-gradient(#000 45%,transparent)}
+.hero-art{top:125px;width:1000px;mask-image:linear-gradient(transparent,#000 8%,#000 58%,transparent 98%)}
+.hero-copy{padding-top:530px;padding-bottom:65px;pointer-events:none}.hero-copy a{pointer-events:auto}.hero-copy>.kicker{font-size:9px;letter-spacing:2px}.hero h1{font-size:clamp(38px,4.6vw,66px);text-shadow:0 2px 25px #03080e;margin-top:14px}.hero-copy>p{text-shadow:0 2px 15px #03080e}
+.hero-aside{position:absolute;z-index:3;top:320px;text-align:left;width:190px}.hero-aside-left{left:max(32px,calc((100% - 1200px)/2))}.hero-aside-right{right:max(32px,calc((100% - 1200px)/2));width:205px}.hero-micro{font:8px/1.7 monospace;letter-spacing:1.4px;color:#809fbd}.hero-aside p{font-size:12px;line-height:1.9;color:#afc3d8;margin:14px 0}.hero-cross{font:32px/1 monospace;display:block;color:#598bb5;margin-top:26px}.hero-scenarios{margin-top:16px}.hero-scenarios button{display:flex;justify-content:space-between;align-items:center;width:100%;min-height:46px;padding:12px 0;border:0;border-bottom:1px solid #31506c80;background:none;color:#7896b4;font:11px Manrope;cursor:pointer;text-align:left}.hero-scenarios button[aria-pressed=true]{color:#e2f1ff}.hero-scenarios button[aria-pressed=true]>span{color:#86caff}.hero-scenarios button:hover{color:#d5ecff}.hero-aside .hero-scenario-description{font-size:10px;color:#8eaac5;line-height:1.8;min-height:50px;margin-top:17px}
+@media(min-width:1600px){.hero-art{width:1100px;top:110px}.hero{min-height:960px}.hero-copy{padding-top:580px}.hero-word{font-size:190px}.hero-aside{top:340px}}
+@media(max-width:1100px){.hero-art{width:880px;top:125px}.hero-aside{width:145px;top:300px}.hero-aside-right{width:160px}.hero-aside p{font-size:10px}.hero-micro{font-size:6px;letter-spacing:1px}.hero-scenarios button{font-size:9px}.hero-aside .hero-scenario-description{font-size:9px}.hero-copy{padding-top:495px}.hero{min-height:855px}}
+@media(max-width:800px){.hero-aside{display:none}.hero-art{width:790px;top:120px}.hero-copy{padding-top:490px}}
+@media(max-width:700px){.hero{min-height:785px}.hero-word{top:65px;font-size:16vw;letter-spacing:-3px;opacity:.8;mask-image:none}.hero-art{top:145px;width:650px;mask-image:linear-gradient(transparent,#000 10%,#000 56%,transparent 98%)}.hero-copy{padding-top:465px;padding-bottom:45px}.hero h1{font-size:33px;letter-spacing:-1.7px}.hero-copy>.kicker{font-size:7px;letter-spacing:1.5px}.hero-copy>p{font-size:14px}.hero-platforms{margin-top:19px}}
+@media(max-width:360px){.hero h1{font-size:29px}.hero-copy{padding-top:445px}.hero-art{width:620px;top:140px}.hero{min-height:775px}}
+@media(forced-colors:active){.hero-art{display:none}.hero-word{color:CanvasText}.hero-scenarios button[aria-pressed=true]{outline:1px solid Highlight}.hero{background:Canvas}}
+
+/* Plain, readable headline. */
+.hero-word{background:none;color:#d9e9f7;opacity:.72;-webkit-text-stroke:0;text-shadow:none;mask-image:linear-gradient(#000 45%,transparent)}
+.hero h1,.hero h1 .headline-lead,.hero h1 .headline-accent{background:none!important;-webkit-text-stroke:0!important;text-shadow:none!important;filter:none!important;mix-blend-mode:normal;opacity:1}
+.hero h1,.hero h1 .headline-lead{color:#f1f6ff!important;-webkit-text-fill-color:#f1f6ff!important}
+.hero h1 .headline-accent{color:#86c4ff!important;-webkit-text-fill-color:#86c4ff!important}
+@media(max-width:700px){.hero-word{mask-image:none;opacity:.8}}
+@media(forced-colors:active){.hero h1,.hero h1 .headline-lead,.hero h1 .headline-accent{color:CanvasText!important;-webkit-text-fill-color:CanvasText!important}}

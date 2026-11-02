@@ -1,12 +1,5 @@
-# Fast_Market — fast-game.ru
+# FAST GAME VPN
 
-Магазин цифровых товаров: ✅ подписки Xbox Game Pass Ultimate / Game Pass / EA Play / Xbox Live Gold, игры, аккаунты и СММ — всё под ключ. Подключаем на ваш личный аккаунт.
+Public website for https://fast-game.ru. Static HTML/CSS/JavaScript; GitHub Pages.
 
-## О репозитории
-
-Статические файлы сайта **fast-game.ru** (GitHub Pages, ветка `main`):
-- `index.html` — лендинг магазина (FAST GAME): тарифы, аккаунты, СММ, гарантии, FAQ, кнопки «Купить» открывают Telegram-бота с выбранным товаром (`?start=<code>`).
-- `privacy.html`, `terms.html` — политика и условия.
-- Иконки, манифесты, `CNAME`.
-
-Исходный код Telegram-бота магазина хранится в приватном репозитории — доступен владельцу по запросу.
+Only public assets are stored here. No VPN credentials, databases or server configuration.
